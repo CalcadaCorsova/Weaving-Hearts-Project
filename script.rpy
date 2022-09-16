@@ -16,8 +16,8 @@ define ats = Character("Atsuko",color="#000000")
 define kan = Character("Kanou",color="#000000")
 define fum = Character("Fumika",color="#000000")
 define har = Character("Haruka",color="#000000")
-define bra = Character("Brandon",color="#009000")
-define mc  = Character("MC",color="#000090")
+define bra = Character("Brandon",color="#0094ff")
+define mc  = Character("MC",color="#267f00")
 
 
 
@@ -87,9 +87,9 @@ transform bounce:# makes the sprite jump
     pause 0.1
     linear 0.1 yoffset 0
 transform nod:# makes the sprite bow/nod
-    linear 0.3 yoffset 40
-    pause 0.7
-    linear 0.3 yoffset 0
+    linear 0.2 yoffset 40
+    pause 0.4
+    linear 0.2 yoffset 0
 transform shake:# makes the sprite shake left/right
     linear 0.1 xoffset 40
     linear 0.1 xoffset -40
@@ -118,7 +118,7 @@ label start:
     "{i}b-stage n1.png - Stage BG night{/i}"
     #scarlett excited
     show cm-concertzoom 1 at cc with dissolve
-    "{i}cm.concertzoom 1.png - Agreed mini-CG showing a closeup of scarlet on stage{/i}"
+    "{i}cm-concertzoom 1.png - Agreed mini-CG showing a closeup of scarlet on stage{/i}"
     sca "I hope everyone has had as much fun as I have!"
     "Crowd" "YEAH!!!!"
     show cm-concertzoom 2
@@ -134,7 +134,7 @@ label start:
         l3
         bx
         ease 1.0 fx
-    show a-mc happy:
+    show a-mc smile:
         r3
         bx
         ease 1.0 fx
@@ -142,7 +142,7 @@ label start:
     bra "I kinda had a feeling you were excited to see me again, but damn, didn’t think you’d go this far."
     mc "Says the one who made us snacks, don’t act like you’re not into it."
     #bradon smiling
-    show a-bra happy
+    show a-bra smile
     bra "Into baking sweets and watching you fangirl? Absolutely."
     bra "But I will say, Scarlett is pretty sweet."
     mc "Isn’t she? I knew you’d get it."
@@ -155,20 +155,19 @@ label start:
         linear 0.5 xr
     mc "LET’S GO MEET SCARLETT!"
     ##mc fades from screen
-    bra "Aaaand he’s gone."
+    bra "{cps=*0.1}Aaaand{/cps} he’s gone."
     show a-bra:
-        linear 2.0 xr
+        linear 4.0 xr
     show b-blackscreen with dissolve
-    pause 1.0
     ##same crowd scene just after transition
     ##scarlett enters mid-screen
     #scarlett happy
     show a-bra neutral at l4
-    show a-mc nervous at l2
+    show a-mc awkward at l2
     show a-sca smile at r3
-    hide b-blackscreen with dissolve
     show a-mc:
         ease 1.0 l1
+    hide b-blackscreen with dissolve
     pause 0.5
     sca "Hi, it’s nice to meet you! As you know, I’m Scarlett! Always awesome to see a new fan!"
     mc "…"
@@ -179,12 +178,12 @@ label start:
     mc "(How the hell does he always do that?)"
     #scarlett nervous smile
     show a-sca awkward
-    sca "{cps=*0.5}Soooo,{/cps} what’s your name?"
+    sca "{cps=*0.1}Soooo,{/cps} {w=1.0} {cps=*0.5}what’s your name?{/cps}"
     python:
         mcn = renpy.input(_("What {i}is{/i} my name?"))
         mcn = mcn.strip() or "MC"
     #brandon enters left side
-    show a-bra:
+    show a-bra smile:
         ease 1.0 l3
     bra "Hey, I’m Brandon and this is [mcn], sorry he’s weird."
     bra "Great show by the way."
@@ -201,13 +200,14 @@ label start:
         linear 0.2 l2
         shake
     pause 0.2
-    show a-mc dead:
+    show a-mc gya:
         shake
     show a-sca scared:
         linear 0.2 r4
     pause 1.0
     bra "You were so excited, say something, idiot!"
-    show a-mc surprised:
+    show a-sca awkward
+    show a-mc awkward:
         ease 0.5 c0
     mc "Right! I-I’m a huge fan, I just wanted to say I’ve been a fan for a long time and your music has helped me a lot!"
     mc "I was hoping you could sign this."
@@ -221,7 +221,7 @@ label start:
     sca "Absolutely!"
     #brandon smug
     show a-bra smug
-    show a-mc happy:
+    show a-mc smile:
         ease 1.0 r1
     show a-sca:
         ease 0.5 r3
@@ -246,11 +246,11 @@ label start:
         nod
     #sacrlett fades from screen
     #brandon fades from screen
-    pause 1.5
+    pause 0.8
     show a-sca:
-        linear 1.5 alpha 0.0
+        linear 0.5 alpha 0.0
     show a-bra:
-        linear 1.5 alpha 0.0
+        linear 0.5 alpha 0.0
     mc "(I love this town.)"
     show b-blackscreen with dissolve
     pause 1
