@@ -255,4 +255,5 @@ label start:
     show b-blackscreen with dissolve
     pause 1
     "This is the end of the WIP game"
+    #this is a test line from Able98Able98
     return
