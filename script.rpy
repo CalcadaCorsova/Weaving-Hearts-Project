@@ -256,4 +256,5 @@ label start:
     pause 1
     "This is the end of the WIP game"
     #this is a test line from Able98Able98
+    #This is another test line from able98able98
     return
