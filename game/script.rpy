@@ -1,25 +1,10 @@
-﻿# The script of the game goes in this file.
-
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
-
-
-
-define krr = Character("Kirara",color="#000000")
-define krs = Character("Kirashima",color="#000000")
-define kao = Character("Kaori",color="#000000")
-define sca = Character("Scarlet",color="#900000")
-define sco = Character("Scottlyn",color="#000000")
-define nek = Character("Nekome",color="#000000")
-define mar = Character("Mari",color="#000000")
-define ats = Character("Atsuko",color="#000000")
-define kan = Character("Kanou",color="#000000")
-define fum = Character("Fumika",color="#000000")
-define har = Character("Haruka",color="#000000")
-define bra = Character("Brandon",color="#0094ff")
-define mc  = Character("MC",color="#267f00")
-
-
+﻿##############################
+  ##  ##  ##  ##  ##  ####
+  ##  ##  ##  ##  ##  ##  ##
+  ##  ##  ##  ######  ####
+  ##  ##  ##  ##  ##  ##
+    ##  ##    ##  ##  ##
+##############################
 
 ### Screen Locations
 ##   x only   ## These only effect left/right position, not up/down
@@ -99,6 +84,43 @@ transform shake:# makes the sprite shake left/right
     linear 0.1 xoffset -40
 
 
+### Character Shorthands
+#main
+define mc = Character("MC",color="#267f00")
+define gei = Character("Geisha",color="#000000")
+define har = Character("Haruka",color="#000000")
+define krr = Character("Kirara",color="#000000")
+define sca = Character("Scarlet",color="#900000")
+define sco = Character("Scotlyn",color="#000000")
+#Side
+define bra = Character("Brandon",color="#0094ff")
+define bri = Character("Brianne",color="#000000")
+define fum = Character("Fumika",color="#000000")
+define kao = Character("Kaori",color="#000000")
+define nek = Character("Nekome",color="#000000")
+define sho = Character("Shoko",color="#000000")
+define rin = Character("Rin",color="#000000")
+define tog = Character("Toge",color="#000000")
+define nad = Character("Nadeshiko",color="#000000")
+#NRC
+define ats = Character("Atsuko",color="#000000")
+define kan = Character("Kanou",color="#000000")
+define sjk = Character("Scott JK",color="#000000")
+define sor = Character("Sora",color="#000000")
+define tam = Character("Tamashii",color="#000000")
+define yur = Character("Yuri",color="#000000")
+#WW
+define alf = Character("Alfred",color="#000000")
+define asm = Character("Asmund",color="#000000")
+define dad = Character("Dad",color="#000000")
+define may = Character("Mayor",color="#000000")
+define sam = Character("Sams",color="#000000")
+#???
+define mar = Character("Mari",color="#000000")
+define oto = Character("Otto",color="#000000")
+
+## Misc
+
 #
 #image shortname = Movie(play="filename.ogv", pos=(0, 0), anchor=(0, 0))
 #    e "For example, we might want to have text that is {b}bold{/b}, {i}italic{/i}, {s}struckthrough{/s}, or {u}underlined{/u}."
@@ -106,12 +128,24 @@ transform shake:# makes the sprite shake left/right
 
 
 
-label start:
-
-
-
-    # These display lines of dialogue.
-
+label start: ### Start Of Game
+    "Welcome to the WIP Weaving hearts VN"
+    ### Dev Scene Select
+    image ScSeTx = Text(_("Dev Scene select"), size=120)
+    show ScSeTx with dissolve:
+        c0
+        ypos 0.1
+menu:
+    "Prologue":
+        hide ScSeTx with dissolve
+        jump prologue_scene_1
+    "Experimental Section":
+        hide ScSeTx with dissolve
+        jump experimental
+    "End":
+        hide ScSeTx with dissolve
+        jump end_of_wip
+label prologue_scene_1:
     "{i}Prologue, Scene 1{/i}"
     ##concert scene at night.
     scene b-stage n1
@@ -252,9 +286,80 @@ label start:
     show a-bra:
         linear 0.5 alpha 0.0
     mc "(I love this town.)"
-    show b-blackscreen with dissolve
+    scene b-blackscreen with dissolve
     pause 1
-    "This is the end of the WIP game"
+    "{i}This is the end of the WIP script{/i}"
     #this is a test line from Able98Able98
     #This is another test line from able98able98
+label experimental:
+    "{i}Start of Experimental section{/i}"
+    "This game has a patent pending Sakura mode for H scenes to make them SFYT and ease editing"
+    show d-sakura petal with dissolve:
+        alpha 0.5
+        yoffset -30
+menu:
+    "Do you want to enable Sakura mode?"
+    "Yes":
+        jump sakura_ena
+    "No":
+        jump sakura_dis
+label sakura_ena:
+    $ sakura_flag = True
+    show d-sakura:
+        linear 0.5 alpha 1.0
+    "Sakura mode enabled"
+    jump sakura_conf
+label sakura_dis:
+    $ sakura_flag = False
+    show d-sakura:
+        linear 0.5 alpha 0.0
+    "Sakura mode disabled"
+    jump sakura_conf
+label sakura_conf:
+    scene b-blackscreen with dissolve
+    "{i}Allong comes an H scene{/i}"
+    show a-sca laugh at c0 with dissolve
+    image nips = Solid("#900000", xysize=(400, 200))
+    image naps = Text(_("Nip Naps"), size=80)
+    show nips:
+        c0
+        ypos 0.65
+        alpha 0.0
+    show naps:
+        c0
+        ypos 0.65
+        alpha 0.0
+    if sakura_flag:
+        "Sakura enabled"
+        show d-sakura wall:
+            c0
+            yoffset 600
+            zoom 2.1
+        show nips:
+            alpha 1.0
+        show naps:
+            alpha 1.0
+        show a-sca scared with dissolve
+        pause 0.5
+        show a-sca awkward with dissolve
+    else:
+        "Sakura not enabled"
+        show nips:
+            alpha 1.0
+        show naps:
+            alpha 1.0
+        show a-sca scared with dissolve
+    "{i}End of Experimental section{/i}"
+    scene b-blackscreen with dissolve
+label end_of_wip:
+    "{i}This is the end of the WIP game{/i}"
+    "{i}The VN will now return to the main menu{/i}"
+    scene b-blackscreen with dissolve
     return
+##############################
+  ##  ##  ##  ##  ##  ####
+  ##  ##  ##  ##  ##  ##  ##
+  ##  ##  ##  ######  ####
+  ##  ##  ##  ##  ##  ##
+    ##  ##    ##  ##  ##
+##############################
