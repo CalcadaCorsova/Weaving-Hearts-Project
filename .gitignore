@@ -77,3 +77,29 @@ game/gui/slider/vertical_idle_bar.png
 game/gui/slider/vertical_idle_thumb.png
 game/gui/textbox.png
 game/gui/window_icon.png
+game - Shortcut.lnk
+errors.txt
+game/gui.rpy
+game/gui.rpyc
+game/cache/screens.rpyb
+game/cache/pyanalysis.rpyb
+game/cache/bytecode.rpyb
+*.save
+game/saves/navigation.json
+game/saves/persistent
+game/screens.rpy
+game/screens.rpyc
+game/script.rpyc
+game/tl/None/common.rpym
+game/tl/None/common.rpymc
+game/images/filename.ogv
+game/images/movie_waves.ogv
+log.txt
+traceback.txt
+game/options.rpyc
+game/options.rpy
+game/images/BWVNP - Shortcut.lnk
+game/images/BG far.png
+game/images/BG near.png
+game/images/BG near2.png
+game/images/BG skyTall.png
