@@ -39,19 +39,36 @@ import sys
 
 # Dictionary to translate the characters' names into their
 # brief forms for renpy.
-character = {"kirara": "krr",
-             "kirashima": "krs",
-             "kaori": "kao",
-             "scarlet": "sca",
-             "scottlyn": "sco",
-             "nekome": "nek",
-             "mari": "mar",
-             "atsuko": "ats",
-             "kanou": "kan",
-             "fumika": "fum",
-             "haruka": "har",
-             "brandon": "bra",
-             "mc": "mc"}
+character = {
+    "mc"        : "mc",
+    "geisha"    : "gei",
+    "haruka"    : "har",
+    "kirara"    : "krr",
+    "scarlet"   : "sca",
+    "scotlyn"   : "sco",
+    "brandon"   : "bra",
+    "brianne"   : "bri",
+    "fumika"    : "fum",
+    "kaori"     : "kao",
+    "nekome"    : "nek",
+    "shoko"     : "sho",
+    "rin"       : "rin",
+    "toge"      : "tog",
+    "nadeshiko" : "nad",
+    "atsuko"    : "ats",
+    "kanou"     : "kan",
+    "scott jk"  : "sjk",
+    "sora"      : "sor",
+    "tamashii"  : "tam",
+    "yuri"      : "yur",
+    "alfred"    : "alf",
+    "asmund"    : "asm",
+    "dad"       : "dad",
+    "mayor"     : "may",
+    "sams"      : "sam",
+    "mari"      : "mar",
+    "otto"      : "oto"
+    }
 
 """
 First positional argument (with number) will look like one of these:
