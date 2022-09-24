@@ -70,43 +70,53 @@ character = {
     "otto"      : "oto"
     }
 
-"""
-First positional argument (with number) will look like one of these:
-4
-1,2,3
-5-10
-"""
 parser = argparse.ArgumentParser()
 parser.add_argument("file", help="the file to parse")
 parser.add_argument("-n", "--numbers", help="the line numbers to parse")
 
 args = parser.parse_args()
 
-# RE is any digit at least 1 or more time, then "-", and
-# any digit at least 1 or more times.
-# Matches with "14-20" and "50-10".
-range_re = r"\d+-\d+" # Used to determine if the argument is a range.
+"""
+RE matches
+43
+15-48
+1,2,3
+1,2,3,4
+"""
+# RE pattern to exclusively match with valid arguments.
+num_re = r"^(\d+-\d+)$|^(\d+,)+\d+$|^\d+$"
 
-# RE is any alphanumeric character ([a-zA-z0-9_]) at least 1 or more times
-# and starts at the beginning.
-# Then, it is followed by 1 whitespace OR a colon.
-# Matches with 'mc "Some text."' where 'mc ' is matched.
-# Matches with 'mc: "Some text."' where 'mc:' is matched.
-char_re = r"^\w+(\s{1}|:)" # Used to extract the character thinking/talking from the text.
+"""
+RE matches
+mc: "Some text." -- "mc:"
+mc "Some text."  -- "mc "
+"""
+# RE pattern to match with the character thinking/talking from the text.
+char_re = r"^\w+(\s{1}|:)"
 
-if args.numbers != None:
-    num = re.match(range_re, args.numbers)
-    if num:
+# Make the script work if FILE is the only argument.
+try:
+    num = re.match(num_re, args.numbers)
+except TypeError:
+    num = None
+    print("Parse all of FILE, maybe use a generator")
+    exit()
+
+# if RE did not match and -n ARGUMENT is provided,
+# the argument has letters and/or bad formatting (e.g., 4,2,hm).
+if num == None and args.numbers != None:
+    sys.stderr.write(f"'{args.numbers}' is not valid for the option '-n'")
+    exit()
+
+# if RE matches
+if num != None:
+    if "-" in num.group(0):
+        print(num)
         print("Handle the range of numbers")
-    elif "," in args.numbers:
+    elif "," in num.group(0):
         print("Put the numbers in a list")
     else:
-        try:
-            args.numbers = int(args.numbers)
-        except ValueError:
-            sys.stderr.write(f"'{args.numbers}' is not valid for the option '-n'")
-            exit()
+        num = [int(num.group(0))]
+        print(num)
 
-# If the expression on line 79 evaluates to false,
-# then this script should parse the entire file.
-print("Parse FILE now that the numbers are set up")
+print("Parse specified lines of FILE, maybe use a generator")
