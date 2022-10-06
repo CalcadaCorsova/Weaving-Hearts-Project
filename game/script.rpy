@@ -134,7 +134,7 @@ label start: ### Start Of Game
     image ScSeTx = Text(_("Dev Scene select"), size=120)
     show ScSeTx with dissolve:
         c0
-        ypos 0.1
+        ypos 0.0
 menu:
     "Prologue Intro":
         hide ScSeTx with dissolve
@@ -142,6 +142,9 @@ menu:
     "Prologue Concert End":
         hide ScSeTx with dissolve
         jump prologue_concert_end
+    "Wholesome Library Scene":
+        hide ScSeTx with dissolve
+        jump wholesome_library
     "Experimental Section":
         hide ScSeTx with dissolve
         jump experimental
@@ -366,7 +369,94 @@ label prologue_concert_end:
     "{i}This is the end of the WIP script{/i}"
     #this is a test line from Able98Able98
     #This is another test line from able98able98
-
+label wholesome_library:
+    "{i}Wholesome Library Scene start{/i}"
+    "{i}With assets shamelessly stolen from Cafe Stella's BG{/i}"
+    scene b-cl-library d
+    window hide
+    show bx-lib-yuzu desk-look
+    show bx-lib-toge tble-read:
+        ypos 2.0
+    show bx-lib-neko desk-b
+    show b-blackscreen
+    pause 1.0
+    hide b-blackscreen with dissolve
+    pause
+    show bx-lib-neko shlf with dissolve
+    show bx-lib-yuzu desk-read with dissolve
+    pause # Toge comes in the room
+    show bx-lib-yuzu desk-surp
+    pause 0.15
+    show bx-lib-yuzu desk-neu with dissolve
+    pause 0.6
+    show bx-lib-yuzu desk-look with dissolve
+    show bx-lib-toge with dissolve:
+        ypos 0.0
+    pause 1.5
+    show bx-lib-yuzu desk-read with dissolve
+    pause # Neko sits down
+    show bx-lib-neko tble-read with dissolve
+    pause
+    show bx-lib-yuzu desk-look with dissolve
+    pause # Toge gets up
+    show bx-lib-yuzu desk-look-surp
+    pause 0.15
+    show bx-lib-yuzu desk-read with dissolve
+    pause 0.15
+    show bx-lib-toge shlf with dissolve
+    pause # Toge sits down
+    show bx-lib-toge tble-read with dissolve
+    show bx-lib-yuzu desk-look with dissolve
+    pause 0.2
+    show bx-lib-yuzu desk-read with dissolve
+    pause # Neko gets up
+    show bx-lib-neko shlf with dissolve
+    pause # Neko sits down
+    show bx-lib-neko tble-read with dissolve
+    pause # Yuzu wonders what's up
+    show bx-lib-yuzu desk-conf with dissolve
+    pause 0.5
+    show bx-lib-cc-angy 1-i    with dissolve
+    pause
+    show bx-lib-cc-angy 1-ii   with dissolve
+    pause
+    show bx-lib-cc-angy 1-iii  with dissolve
+    pause
+    show bx-lib-cc-angy 1-iv   with dissolve
+    pause # Yuzu awkward
+    hide bx-lib-cc-angy        with dissolve
+    image bx-lib-yuzu desk-awk:
+        "bx-lib-yuzu desk-awk-i"
+        pause 0.1
+        "bx-lib-yuzu desk-awk-ii"
+        pause 0.1
+        "bx-lib-yuzu desk-awk-iii"
+        pause 0.1
+        "bx-lib-yuzu desk-awk-iv"
+        pause 0.1
+        repeat
+    show bx-lib-yuzu desk-awk with dissolve
+    pause # Toge leaves
+    show bx-lib-yuzu desk-look-surp
+    pause 0.15
+    hide bx-lib-toge with dissolve
+    pause 0.15
+    show bx-lib-yuzu desk-neu with dissolve
+    pause 1.0
+    show bx-lib-yuzu desk-read with dissolve
+    pause
+    show bx-lib-neko desk with dissolve
+    pause 0.5
+    show bx-lib-yuzu desk-look-conf with dissolve
+    pause
+    window auto
+    show bx-lib-yuzu desk-look with dissolve
+    show bx-lib-neko desk-conf with dissolve
+    pause
+    nek "There was someone else here?"
+    scene b-blackscreen with dissolve
+    "{i}Wholesome Library Scene end{/i}"
+    pause 1
 label experimental:
     "{i}Start of Experimental section{/i}"
     "This game has a patent pending Sakura mode for H scenes to make them SFYT and ease editing"

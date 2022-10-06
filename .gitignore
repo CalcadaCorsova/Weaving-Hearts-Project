@@ -1,4 +1,8 @@
 
+game/cache/screens.rpyb
+game/cache/pyanalysis.rpyb
+game/cache/bytecode.rpyb
+
 game/gui/bar/bottom.png
 game/gui/bar/left.png
 game/gui/bar/right.png
@@ -15,12 +19,6 @@ game/gui/button/radio_foreground.png
 game/gui/button/radio_selected_foreground.png
 game/gui/button/slot_hover_background.png
 game/gui/button/slot_idle_background.png
-game/gui/frame.png
-game/gui/game_menu.png
-game/gui/main_menu.png
-game/gui/namebox.png
-game/gui/notify.png
-game/gui/nvl.png
 game/gui/overlay/confirm.png
 game/gui/overlay/game_menu.png
 game/gui/overlay/main_menu.png
@@ -66,7 +64,6 @@ game/gui/scrollbar/vertical_hover_bar.png
 game/gui/scrollbar/vertical_hover_thumb.png
 game/gui/scrollbar/vertical_idle_bar.png
 game/gui/scrollbar/vertical_idle_thumb.png
-game/gui/skip.png
 game/gui/slider/horizontal_hover_bar.png
 game/gui/slider/horizontal_hover_thumb.png
 game/gui/slider/horizontal_idle_bar.png
@@ -75,30 +72,40 @@ game/gui/slider/vertical_hover_bar.png
 game/gui/slider/vertical_hover_thumb.png
 game/gui/slider/vertical_idle_bar.png
 game/gui/slider/vertical_idle_thumb.png
+
+game/gui/\[BWVNP\].lnk
+game/gui/frame.png
+game/gui/game_menu.png
+game/gui/namebox.png
+game/gui/notify.png
+game/gui/nvl.png
+game/gui/skip.png
 game/gui/textbox.png
-game - Shortcut.lnk
-errors.txt
-game/gui.rpy
-game/gui.rpyc
-game/cache/screens.rpyb
-game/cache/pyanalysis.rpyb
-game/cache/bytecode.rpyb
-*.save
-game/saves/navigation.json
-game/saves/persistent
-game/screens.rpy
-game/screens.rpyc
-game/script.rpyc
-game/tl/None/common.rpym
-game/tl/None/common.rpymc
+
+game/images/\[BWVNP\].lnk
 game/images/filename.ogv
-game/images/movie_waves.ogv
-log.txt
-traceback.txt
-game/options.rpyc
-game/options.rpy
-game/images/BWVNP - Shortcut.lnk
 game/images/BG far.png
 game/images/BG near.png
 game/images/BG near2.png
 game/images/BG skyTall.png
+game/images/movie_waves.ogv
+game/images/BWVNP - Shortcut.lnk
+
+game/saves/navigation.json
+game/saves/persistent
+
+game/tl/None/common.rpym
+game/tl/None/common.rpymc
+
+game/gui.rpy
+game/gui.rpyc
+game/options.rpyc
+game/screens.rpy
+game/screens.rpyc
+game/script.rpyc
+
+\[CC Native WIP\].lnk
+errors.txt
+log.txt
+traceback.txt
+*.save
