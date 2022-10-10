@@ -97,13 +97,12 @@ game/saves/persistent
 game/tl/None/common.rpym
 game/tl/None/common.rpymc
 
-game/gui.rpy
 game/gui.rpyc
 game/options.rpyc
-game/screens.rpy
 game/screens.rpyc
 game/script.rpyc
 
+extract_00preferences.rpy
 \[CC Native WIP\].lnk
 errors.txt
 log.txt

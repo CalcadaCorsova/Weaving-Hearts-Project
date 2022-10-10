@@ -6,6 +6,17 @@
     ##  ##    ##  ##  ##
 ##############################
 
+### Persistants
+default persistent.sakura = 1
+
+### Predefined
+image d-sak-i c:
+    ConditionSwitch(
+    "persistent.sakura == 0", Image("images/d-sak-i 0.png"),
+    "persistent.sakura == 1", Image("images/d-sak-i 1.png"),
+    "persistent.sakura == 2", Image("images/d-sak-i 2.png")
+    )
+
 ### Screen Locations
 ##   x only   ## These only effect left/right position, not up/down
 transform lx:#Just off screen left
@@ -86,38 +97,46 @@ transform shake:# makes the sprite shake left/right
 
 ### Character Shorthands
 #main
-define mc = Character("MC",color="#267f00")
-define gei = Character("Geisha",color="#000000")
-define har = Character("Haruka",color="#000000")
-define krr = Character("Kirara",color="#000000")
-define sca = Character("Scarlet",color="#900000")
-define sco = Character("Scotlyn",color="#000000")
+define mc   = Character("MC"             ,color="#267f00")  # A #
+define gei  = Character("Geisha"         ,color="#eb448f")  # B
+define geiq = Character("???"            ,color="#eb448f")  # B
+define krn  = Character("Kirin"          ,color="#eb448f")  # B
+define har  = Character("Haruka"         ,color="#e53935")  # C #
+define hars = Character("Yamane Sensei"  ,color="#e53935")  # C #
+define krr  = Character("Kirara"         ,color="#200857")  # D
+define sca  = Character("Scarlet"        ,color="#900000")  # E #
+define sco  = Character("Scotlyn"        ,color="#000000")  # F
 #Side
-define bra = Character("Brandon",color="#0094ff")
-define bri = Character("Brianne",color="#000000")
-define fum = Character("Fumika",color="#000000")
-define kao = Character("Kaori",color="#000000")
-define nek = Character("Nekome",color="#000000")
-define sho = Character("Shoko",color="#000000")
-define rin = Character("Rin",color="#000000")
-define tog = Character("Toge",color="#000000")
-define nad = Character("Nadeshiko",color="#000000")
+define bra  = Character("Brandon"        ,color="#0094ff")  # A #
+define braq = Character("???"            ,color="#0094ff")  # A #
+define bri  = Character("Brianne"        ,color="#000000")  # B
+define fum  = Character("Fumika"         ,color="#000000")  # C #
+define kao  = Character("Kaori"          ,color="#8859ff")  # D
+define nek  = Character("Nekome"         ,color="#8afdff")  # E #
+define nyk  = Character("Nyeko"          ,color="#8afdff")  # E #
+define nekq = Character("???"            ,color="#8afdff")  # E #
+define sho  = Character("Shoko"          ,color="#000000")  # F
+define rin  = Character("Rin"            ,color="#08080f")  # G #
+define tog  = Character("Toge"           ,color="#007f0e")  # H
+define nad  = Character("Nadeshiko"      ,color="#000000")  # I #
 #NRC
-define ats = Character("Atsuko",color="#000000")
-define kan = Character("Kanou",color="#000000")
-define sjk = Character("Scott JK",color="#000000")
-define sor = Character("Sora",color="#000000")
-define tam = Character("Tamashii",color="#000000")
-define yur = Character("Yuri",color="#000000")
+define ats  = Character("Atsuko"         ,color="#000000")  # A #
+define kan  = Character("Kanou"          ,color="#000000")  # B
+define sjk  = Character("Malcolm"        ,color="#000000")  # C #
+define sjks = Character("Sinclair Sensei",color="#000000")  # C #
+define sor  = Character("Sora"           ,color="#000000")  # D
+define tam  = Character("Tamashii"       ,color="#000000")  # E #
+define yur  = Character("Yuri"           ,color="#00887a")  # F
+define yurs = Character("Karakada Sensei",color="#00887a")  # F
 #WW
-define alf = Character("Alfred",color="#000000")
-define asm = Character("Asmund",color="#000000")
-define dad = Character("Dad",color="#000000")
-define may = Character("Mayor",color="#000000")
-define sam = Character("Sams",color="#000000")
+define alf  = Character("Alfred"         ,color="#000000")  # A #
+define asm  = Character("Asmund"         ,color="#000000")  # B
+define dad  = Character("Dad"            ,color="#000000")  # C #
+define may  = Character("Mayor"          ,color="#000000")  # D
+define sam  = Character("Sams"           ,color="#000000")  # E #
 #???
-define mar = Character("Mari",color="#000000")
-define oto = Character("Otto",color="#000000")
+define mar  = Character("Mari"           ,color="#000000")  # F
+define oto  = Character("Otto"           ,color="#000000")  # G #
 
 ## Misc
 
@@ -127,9 +146,19 @@ define oto = Character("Otto",color="#000000")
 
 
 
-
 label start: ### Start Of Game
+    $ txtbox = 00
     "Welcome to the WIP Weaving hearts VN"
+    #scene tstgry
+    "..."
+    $ txtbox = 22
+    "This uses the first frame style."
+    $ txtbox = 30
+    "This uses the second frame style."
+    define a = Character("Test Character 1", color="#200857", who_outlines=[ (1, "#ffffff") ], what_outlines=[ (1, "#ffffff") ])
+    define b = Character("Test Character 2", color="#08080f", who_outlines=[ (1, "#ffffff") ], what_outlines=[ (1, "#ffffff") ])
+    a "This is Kirara's colour"
+    a "And this is Rin's colour"
     ### Dev Scene Select
     image ScSeTx = Text(_("Dev Scene select"), size=120)
     show ScSeTx with dissolve:
@@ -139,25 +168,35 @@ menu:
     "Prologue Intro":
         hide ScSeTx with dissolve
         jump prologue_intro
+    "Prologue Concert Q&A":
+        hide ScSeTx with dissolve
+        jump prologue_qna
     "Prologue Concert End":
         hide ScSeTx with dissolve
         jump prologue_concert_end
     "Wholesome Library Scene":
         hide ScSeTx with dissolve
         jump wholesome_library
-    "Experimental Section":
+    "Sakura Mode Explanation":
         hide ScSeTx with dissolve
         jump experimental
+    "Sakura Mode Demo":
+        hide ScSeTx with dissolve
+        jump demo_h_start
     "End":
         hide ScSeTx with dissolve
         jump end_of_wip
 label scene_bookends: ## Copy when making new scene
     "{i}scene_bookend start{/i}"
+    scene b-blackscreen with dissolve
+    $ txtbox = 00
     "{i}scene_bookend end{/i}"
     scene b-blackscreen with dissolve
-    pause 1
+    pause 1 # "
 label prologue_intro:
     "{i}Prologue, Scene 1*{/i}"
+    scene b-blackscreen with dissolve
+    $ txtbox = 12
     "{i}Before the Concert{/i}"
     #[mc is seated on a bench in the city’s largest park, gazing into the darkening sky]
     "(Some kind of profound monologue regarding his current view of the world, idfk)"
@@ -166,14 +205,15 @@ label prologue_intro:
     mc  "(It was only when I had felt the touch of an ice cold object pressed against the nape of my neck that I realized I had been daydreaming)"
     #[Silhouette of Brandon’s sprite appears, as screen shakes to signify mc jolting up]
     mc  "?!"
-    "???"  "Oh, hey, you are awake."
+    braq "Oh, hey, you are awake."
     #[Pulling out his phone to see the time was now 6:34 PM]
     mc  "Yeah, I am. You’re cutting it close. What took you so long?" #[Slightly annoyed tone]
     #[Brandon’s silhouette fully becomes the character’s sprite]
     bra "Missed the damn train because I had to make a stop. Got us some drinks and snacks, see?" #[Lifts up a convenience store bag full of items]
-    mc  "(The person that had just risen me from my stupor was my close friend, Brandon Marsh. We’ve known each other since we were kids, but we didn’t really grow up together. I only ever saw him when I would visit my grandparents here in the city, since his house was just down the road.)"
-    mc  "(You could probably tell from his mannerisms and appearance, but he’s not from Japan. He tells me that when he was 2 years old, his parents were so fascinated by the country that they moved here, though that wasn’t without some issues.)"
-    mc  "(Because of this, he was raised by both the Japanese school system and the American mannerisms that his parents carried over from their last residence. The first time I met him, I was 5 years old, and we've become good friends since.)"
+    "(The person that had just risen me from my stupor was my close friend, Brandon Marsh. We’ve known each other since we were kids, but we didn’t really grow up together.)"
+    "(I only ever saw him when I would visit my grandparents here in the city, since his house was just down the road. You could probably tell from his mannerisms and appearance, but he’s not from Japan.)"
+    "(He tells me that when he was 2 years old, his parents were so fascinated by the country that they moved here, though that wasn’t without some issues.)"
+    "(Because of this, he was raised by both the Japanese school system and the American mannerisms that his parents carried over from their last residence. The first time I met him, I was 5 years old, and we've become good friends since.)"
     #[Standing up from the bench]
     mc  "I guess that saves us some money, then. C’mon, the show starts at 7, and we still have to get through the line at security"
     bra "Shit, you’re right. Yeah, let’s hurry"
@@ -191,7 +231,8 @@ label prologue_intro:
     bra "I thought that was the case. Because I thought you’d wanna see more of Scarlett tonight…"
     #[Brandon pulls out 2 tickets from his hoodie pockets, and hands one to mc]
     bra "...I got us these"
-    mc  "No way, are those the deluxe tickets that sold out weeks ago?"
+    mc  "No way!"
+    mc  "Are those the deluxe tickets that sold out weeks ago?!"
     bra "Sure are"
     mc  "Don’t these cost quite a bit? I’ll pay you back later, when I can"
     #[Waving his hand in front of him dismissively]
@@ -203,17 +244,25 @@ label prologue_intro:
     bra "I knew I made the right call to make that stop"
     mc  "What was that?" #[Quizzically]
     bra "Nothing, let’s head in"
-    mc  "(The wait had just barely reached the 5 minute mark when we got cleared to enter. It was now 6:50, ten minutes until showtime. And the other line looked like it wouldn’t be fully cleared until after the show had already started. I silently thanked Brandon again for getting these tickets as we headed in)"
+    "(The wait had just barely reached the 5 minute mark when we got cleared to enter. It was now 6:50, ten minutes until showtime. And the other line looked like it wouldn’t be fully cleared until after the show had already started.)"
+    mc "(Thanks again Brandon)"
     #[Scene transitions to the concert]
-    mc  "(The crowd was unlike anything I had seen before. At least a thousand or two strangers crammed into this small section of the park. There was no ceiling, so you could look up and see the night sky. The stage spotlights were currently aimed at the crowd as one of the sole sources of light for the crowd to see and navigate with. But thanks to our nearly late arrival, Brandon and I were stuck near the rear middle, a good 15 rows away from the stage. But I could thankfully still see the stage clearly, the sea of heads indicative of just how popular Scarlett must be. Before long, the voice of a hypeman roars through the speakers.)"
+    "(The crowd was unlike anything I had seen before. At least a thousand or two strangers crammed into this small section of the park. There was no ceiling, so you could look up and see the night sky.)"
+    "(The stage spotlights were currently aimed at the crowd as one of the sole sources of light for the crowd to see and navigate with. But thanks to our nearly late arrival, Brandon and I were stuck near the rear middle, a good 15 rows away from the stage.)"
+    "(But I could thankfully still see the stage clearly, the sea of heads indicative of just how popular Scarlett must be. Before long, the voice of a hypeman roars through the speakers.)"
     "Hypeman" "Alright, you precious little Roses. You’ve been waiting long enough. Give some cheer to your darling senpai, Scarlett!"
     #[The crowd begins counting down with the hypeman]
-    "Hypeman" "In 5… 4…. 3… 2… 1…"
-    mc  "(When the countdown had reached zero, all the lights in the area had shut off. In this period of pitch black respite, a wave of glow sticks from raving fans had emerged, dimly illuminating the restless and excited crowd. When the stage lighting had reactivated, there stood Scarlett, who opened up her performance with her iconic line)"
+    "Hypeman" "In 5{w=0.2}.{w=0.2}.{w=0.2}.{w=0.4} 4{w=0.2}.{w=0.2}.{w=0.2}.{w=0.4} 3{w=0.2}.{w=0.2}.{w=0.2}.{w=0.4} 2{w=0.2}.{w=0.2}.{w=0.2}.{w=0.4} 1{w=0.2}.{w=0.2}.{w=0.2}.{w=0.4}"
+    #"(When the countdown had reached zero, all the lights in the area had shut off. In this period of pitch black respite, a wave of glow sticks from raving fans had emerged, dimly illuminating the restless and excited crowd.)"
+    #"(When the stage lighting had reactivated, there stood Scarlett, who opened up her performance with her iconic line)"
     sca "Heeeeyyyy, everyone~"
     #[Sounds of the roaring crowd following this opening line]
     sca "How are my lovely little Roses doing on this fine evening? I hope you’re prepared to get pumped up, because the show starts now!"
-    mc  "(The instrumental of her latest single began to play, as the crowd cheered Scarlett on. The vibrant flashing lights, in conjunction with Scarlett’s stellar singing and captivating rhythmic dances, had created a vivid image that could never be achieved by just viewing a televised broadcast. This was here. This was now. This was Scarlett’s magic spell in action. I stood there in awe, unable to even cheer myself with just how incredible this spectacle was. At least an hour had gone by with this routine keeping my attention in this tunnel visioned daydream. Before I realized, the performance had come to an end and I was left wanting for more. The sounds of encore raging throughout the park awoke me, along with an announcement from Scarlett herself)"
+    "(The instrumental of her latest single began to play, as the crowd cheered Scarlett on.)"
+    "(The vibrant flashing lights, in conjunction with Scarlett’s stellar singing and captivating rhythmic dances, had created a vivid image that could never be achieved by just viewing a televised broadcast.)"
+    "(This was here. This was now. This was Scarlett’s magic spell in action. I stood there in awe, unable to even cheer myself with just how incredible this spectacle was.)"
+    "(At least an hour had gone by with this routine keeping my attention in this tunnel visioned daydream. Before I realized, the performance had come to an end and I was left wanting for more.)"
+    "(The sounds of encore raging throughout the park awoke me, along with an announcement from Scarlett herself)"
     sca "This isn’t the end yet, Roses. You dedicated fans already know that just after this, there will be a meet and greet Q&A panel, where you can request any question of your darling senpai, at the adjacent tent. See you there, lovelies."
     #[Scarlett then walks towards the backstage, vanishing behind the curtains]
     mc  "(Seemingly reading my mind, I felt Brandon tap my shoulder, speaking to me.)"
@@ -222,11 +271,87 @@ label prologue_intro:
     #[mc and Brandon begin to walk over to the exit and towards the neighboring tent]
     "{i}Scene End{/i}"
     scene b-blackscreen with dissolve
-    pause 1
+    pause 1 # "
+label prologue_qna:
+    "{i}Prologue, Scene 2*{/i}"
+    scene b-blackscreen with dissolve
+    $ txtbox = 12
+    "{i}After? the Concert{/i}"
+    #[Connor and Brandon exit the concert tent and begin walking towards the end of the line full of deluxe ticket holders, waiting to enter the tent where the Q&A panel would be held]
+    bra "So what’d you think? Worth the price of the tickets?"
+    mc  "Yeah, definitely. I’ll be going to the next concert if I find the time. You wanna tag along?"
+    bra "Sure, I’m down with that."
+    #[Brandon notices that he has to use the restroom]
+    bra "Hey, go ahead and get in line without me. Gotta use the restroom real quick."
+    mc  "Oh, alright. Get back here quick, though. I don’t wanna be in this line alone for too long."
+    #[Brandon begins heading away from the line, while Connor moves towards it]
+    #[Connor gazes at how long the line has formed]
+    mc  "No wonder those tickets sold ou-"
+    #[Geisha’s silhouette appears, screen shakes]
+    geiq "He…GYA-!"
+    mc  "(Since I was distracted by my own thoughts, I didn’t notice that I was about to crash into someone else. I heard her cry out slightly before we were both sent to the ground from our collision)"
+    #[Scene switches to image of Connor helping Geisha back on her feet]
+    mc  "Hey, you ok? I wasn’t looking ahead."
+    geiq "Sorry! My bad, shoulda been, like, watching where I was going…"
+    mc  "(Oh god, not this trend…)"
+    mc  "That’s good. Here, lemme help you up."
+    #[Scene changes to previous backdrop, but Geisha’s sprite is fully visible now]
+    geiq "Yeah, thanks. Sorry, if I'm, like, making you late somewhere."
+    mc  "No, it’s fine. I’m just about to get in the line here."
+    geiq "You’re here for the panel? Like, no way! How did you even manage to buy the tickets? They sold out in, like, 30 seconds."
+    mc  "Oh, that was thanks to my friend. I don't know where he got them, but we came here together."
+    geiq "Tsk… fuckin’ lucky…"
+    mc  "What, did you not manage to get them?"
+    geiq "No… just barely had enough to, like, get the basic one…"
+    mc  "Well, that’s too bad, I gue-"
+    #[Nekome’s sprite rushes into the scene, out of breath]
+    nekq "Kiriiiin~! Wait up~!"
+    mc  "(Kirin…?)"
+    krn "Oh hii~, Nyeko-chan. What’s up?"
+    nyk "Why’d you run off like that?"
+    #[Pouty-like]
+    krn "I just felt like getting out of here, ya know?"
+    nyk "But Kirin, Atsuko managed to, like, upgrade our tickets. I wanted to tell you, but you, like, ran off and stuff."
+    #[Excitedly]
+    krn "She did? Like, how??"
+    nyk "I don't know, but she told me to come get you and bring you back."
+    krn "Like, where is she then?!"
+    nyk "She should be near the front now, so we should like-"
+    #[Geisha’s sprite rushes off (with a sound like they use in cartoons, you know the kind)]
+    nyk "Heyy~! Don’t do that~"
+    #[Nekome turns to Connor, giving him a quick silent glance, before her sprites also rushes off, but slower than Geisha]
+    mc  "(Wonder what her deal is. Still, glad that girl’s problem got solved.)"
+    #[Connor begins walking to the end of the line, and starts waiting his turn. Brandon soon returns]
+    bra "Yo, I miss anything?"
+    mc  "Nah, you’re fine. Just ran into this group of gals. Nothing really happened though."
+    bra "Ok, then. Let’s get in there."
+    mc  "(Kirin, huh? I think I know that name. I’ll have to check if it really was them…)"
+    #[The scene transitions into the tent]
+    mc  "(Brandon and I take our seats. I can’t get a good look to see where that Kirin girl and her friends are, but that’s fine.)"
+    #[Scarlett’s sprite appears]
+    mc  "(The panel began, but the questions were lackluster for the most part, usually just about Scarlett’s sizes, her address… things she would never even want to answer. It continued like this until a reporter stood up and posed a rather odd question that received an even more outstanding answer.)"
+    "Reporter" "Rumor has it that you’re still in highschool, Ms. Scarlett, but you’re set to graduate this year. Is this a claim that you can confirm, and what would it mean for your career going forward?"
+    #[Scarlett’s sprite takes on somewhat of a strained smile]
+    sca "Oh, wow~! You must know your stuff, huh…?"
+    #[Sprite returns to normal]
+    sca "Well, I’ll have you know that I definitely have big plans coming up by the end of the year. Because, and you heard this here first, my little roses, I’m planning on taking on the idol industry in Japan by storm, and rising to the top!"
+    #[The crowd cheers]
+    sca "And not only that, when I’m done with Japan, I’m going after the world itself! I hope you’ll be there to support your darling Senpai."
+    #[Scarlett’s sprite puts on a cute face]
+    sca "Won’t you?"
+    #[Crowd cheers even louder than before]
+    mc  "(She’s really planning on doing all that? Well, damn, I’ll be on that wild ride too.)"
+    mc  "(...but wait, what about the first part? She didn’t outright deny it. It’s more like she… tried to avoid it. Whatever the case, I’ll try my best to show her my support.)"
+    #[Scene fades to black]
+    mc  "(The panel continued on with nothing else special happening. After a series of answered questions, Scarlett thanked everyone for coming, and she retired backstage while the crowd dispersed towards the exit. After we left the venue, Brandon and I walked back to the train station. On the train, I told Brandon what I thought of her avoiding the question, and he replied that it’s just her business and she doesn’t have to tell anybody. After we got off the train, we walked down to our houses, said our good nights, and turned in for some sleep.)"
+    "{i}scene_bookend end{/i}"
+    scene b-blackscreen with dissolve
+    pause 1 # "
 label prologue_concert_end:
     "{i}Prologue, Scene 2*{/i}"
     ##concert scene at night.
     scene b-stage n1
+    $ txtbox = 22
     "{i}b-stage n1.png - Stage BG night{/i}"
     #scarlett excited
     show cm-concertzoom 1 at cc with dissolve
@@ -365,14 +490,15 @@ label prologue_concert_end:
         linear 0.5 alpha 0.0
     mc  "(I love this town.)"
     scene b-blackscreen with dissolve
-    pause 1
+    pause 1 # "
     "{i}This is the end of the WIP script{/i}"
     #this is a test line from Able98Able98
     #This is another test line from able98able98
 label wholesome_library:
     "{i}Wholesome Library Scene start{/i}"
-    "{i}With assets shamelessly stolen from Cafe Stella's BG{/i}"
     scene b-cl-library d
+    $ txtbox = 22
+    "{i}With assets shamelessly stolen from Cafe Stella's BG{/i}"
     window hide
     show bx-lib-yuzu desk-look
     show bx-lib-toge tble-read:
@@ -454,39 +580,395 @@ label wholesome_library:
     show bx-lib-neko desk-conf with dissolve
     pause
     nek "There was someone else here?"
-    scene b-blackscreen with dissolve
     "{i}Wholesome Library Scene end{/i}"
-    pause 1
+    pause 1 # "
 label experimental:
+    scene b-blackscreen with dissolve
+    $ txtbox = 00
     "{i}Start of Experimental section{/i}"
-    "This game has a patent pending Sakura mode for H scenes to make them SFYT and ease editing"
-    show d-sakura petal with dissolve:
+    show d-sak-i x:
+        alpha 0.5
+        xalign 1.0
+        yalign 0.0
+    "This game has a patent pending Sakura setting for H scenes to make them SFYT and ease editing"
+    image d-sakura-p1 c:
+        ConditionSwitch(
+        "persistent.sakura == 0", Image("images/d-sakura-p 0.png"),
+        "persistent.sakura == 1", Image("images/d-sakura-p 1.png"),
+        "persistent.sakura == 2", Image("images/d-sakura-p 1.png")
+        )
+    show d-sakura-p1 1 with dissolve:
         alpha 0.5
         yoffset -30
-menu:
-    "Do you want to enable Sakura mode?"
-    "Yes":
-        jump sakura_ena
-    "No":
-        jump sakura_dis
-label sakura_ena:
-    $ sakura_flag = True
-    show d-sakura:
-        linear 0.5 alpha 1.0
-    "Sakura mode enabled"
-    jump sakura_conf
-label sakura_dis:
-    $ sakura_flag = False
-    show d-sakura:
-        linear 0.5 alpha 0.0
-    "Sakura mode disabled"
-    jump sakura_conf
-label sakura_conf:
+    show d-sak-i 1 with dissolve:
+        linear 0.6 alpha 1.0
+    "A petal will appear in the corner during H-Scenes"
+    show d-sak-i 3 with dissolve
+    "The specific petal shows what mode is selected"
+    "Sakura has 3 modes:"
+    show d-sak-i 0:
+        linear 0.2 alpha 0.5
+        linear 0.2 alpha 1.0
+    "Sakura has 3 modes:{fast}
+    \n - NONE: H-Scenes will play uninpeeded"
+    show d-sak-i 1:
+        linear 0.2 alpha 0.5
+        linear 0.2 alpha 1.0
+    "Sakura has 3 modes:
+    \n - NONE: H-Scenes will play uninpeeded{fast}
+    \n - ZOOM: H-Scenes will be kept SFYT"
+    show d-sak-i 2:
+        linear 0.2 alpha 0.5
+        linear 0.2 alpha 1.0
+    "Sakura has 3 modes:
+    \n - NONE: H-Scenes will play uninpeeded
+    \n - ZOOM: H-Scenes will be kept SFYT{fast}
+    \n - SKIP: H-Scenes will be skipped"
+    show d-sak-i 3 with dissolve:
+        linear 0.3 alpha 0.5
+    "Sakura can be changed in the preference menu at any time though it might not update immediately"
+    show d-sak-i c:
+        linear 0.2 alpha 1.0
+        linear 0.2 alpha 0.5
+        linear 0.2 alpha 1.0
+        linear 0.2 alpha 0.5
+    if persistent.sakura == 0:
+        "Sakura is curreltly set to NONE."
+    elif persistent.sakura == 1:
+        "Sakura is curreltly set to ZOOM."
+    elif persistent.sakura == 2:
+        "Sakura is curreltly set to SKIP."
+    else:
+        "Sakura is currently not set"
+    "Now for an example"
     scene b-blackscreen with dissolve
+label demo_h_start:
+    scene b-blackscreen with dissolve
+    $ txtbox = 30
+    "{i}Demo H-scene{/i}"
+    define roka = Character("Roka"  ,color="#e07070")
+    define nana = Character("Nanao" ,color="#b06060")
+    show ax-roka 0-1hap1 with dissolve:
+        l2
+        yoffset 30
+        zoom 0.65
+    show ax-nana 0-1hap1 with dissolve:
+        r2
+        yoffset 60
+        zoom 0.9
+    roka "I really enjoyed this evening dear."
+    nana "Awww sweetie, Me too."
+    nana "It's nice to do someting special from time to time."
+    show ax-roka 0-1haps
+    roka "Y-yeah."
+    show ax-nana:
+        ease 0.8 c0
+    show ax-roka 1-1hap0 with dissolve
+    show ax-roka:
+        ease 0.5 l1
+    nana "Awww, come here."
+    "..."
+    show ax-nana:
+        ease 0.8 r1
+    nana "It's about time we turn in for the night."
+    show ax-roka 0-1awk1  with dissolve
+    roka "Um..."
+    show ax-nana 0-1awk2 with dissolve
+    nana "Yes dear?"
+    show ax-roka:
+        ease 0.5 xoffset -20
+        ease 0.5 xoffset  20
+        ease 0.6 xoffset -20
+        ease 0.8 xoffset  20
+        ease 1.0 xoffset   0
+    roka "...Hey so this might be weird but I kinda wanted to try something..."
+    nana "What, you want me to try being the big spoon?"
+    show ax-roka 0-1surp with dissolve
+    roka "No...{w=0.1} Not that."
+    show ax-roka 0-1awk1 with dissolve
+    roka "...{w=0.3} I mean maybe annother tine but I actually meant something else."
+    show ax-nana 0-1hap1 with dissolve
+    nana "Oh? Go on."
+    roka "When a girl and abnother girl love each other verry much...{w}\n{i}{b}Sex?{/b}{/i}"
+    show ax-nana 0-1awk2 with dissolve
+    nana "Huh."
+    show ax-roka 0-1surp with dissolve
+    roka "I-I mean only if you're ok with it."
+    show ax-roka 0-1awk0 with dissolve
+    nana "I mean I'm not...{w=0.3} opposed...{w=0.3} exactly..."
+    nana "I thought you say you were happy without?"
+    show ax-roka 0-1awk1 with dissolve
+    roka "I am.{w=0.3} I...{w=0.3} I guess I just got curious?"
+    nana "Well I can't say I've never considered it."
+    show ax-nana 0-1hap1 with dissolve
+    nana "Sure, I guess we can try that."
+    show ax-roka 0-1surp with dissolve
+    roka "really."
+    show ax-roka 0-1hap2 with dissolve
+    roka "Thanks Honey!"
+    scene b-blackscreen with dissolve
+    show ax-roka 0-1awk1 with dissolve:
+        r2
+        yoffset 30
+        xzoom -0.65
+        yzoom  0.65
+    show ax-nana 0-1hap1 with dissolve:
+        l1
+        yoffset 60
+        xzoom -0.9
+        yzoom  0.9
+    show d-sak-i 3 with dissolve:
+        alpha 0.5
+        xalign 1.0
+        yalign 0.0
+    "..."
+    roka "Soooo....{w=0.3} how does this work?"
+    show ax-nana 0-1awk2 with dissolve
+    nana "You're the one who asked yet you don't know how sex works?"
+    show ax-roka 0-1awk0 with dissolve
+    roka "I know how sex {i}normally{/i} works but... {w}how does it work between women?"
+label demo_h_spice:  ### Return point for repeating scene
+    $ txtbox = 30
+    show ax-roka 0-1awk0 with dissolve:
+        r2
+        yoffset 30
+        xzoom -0.65
+        yzoom  0.65
+    show ax-nana 0-1hap1 with dissolve:
+        l1
+        yoffset 60
+        xzoom -0.9
+        yzoom  0.9
+    show d-sak-i 3 with dissolve:
+        alpha 0.5
+        xalign 1.0
+        yalign 0.0
+    nana "Geez, you're hopeless."
+    nana "I'll google it."
+    show ax-roka 0-1awk1 with dissolve
+    "..."
+    show ax-nana 0-1awk2 with dissolve
+    nana "Ewww, I'm vetiong that one."
+    "..."
+    show ax-nana 0-1hap1 with dissolve
+    nana "Hmmm... This could work."
+    #roka "Sorry I'm kinda useless at this"
+    #nana "I've never done this either..."
+    "..."
+    image d-sakura-p1 c:
+        ConditionSwitch(
+        "persistent.sakura == 0", Image("images/d-sakura-p 0.png"),
+        "persistent.sakura == 1", Image("images/d-sakura-p 1.png"),
+        "persistent.sakura == 2", Image("images/d-sakura-p 1.png")
+        )
+    image d-sakura-p2 c:
+        ConditionSwitch(
+        "persistent.sakura == 0", Image("images/d-sakura-p 0.png"),
+        "persistent.sakura == 1", Image("images/d-sakura-p 1.png"),
+        "persistent.sakura == 2", Image("images/d-sakura-p 1.png")
+        )
+    show d-sakura-p1 c:
+        xpos 0.25
+        yalign 0.6
+        zoom 0.5
+    show d-sakura-p2 c:
+        xpos 0.25
+        yanchor 0.5
+        ypos 0.9
+        zoom 0.5
+    show ax-nana 0-0hap1 with dissolve
+    show d-sak-i c
+    show ax-roka 0-1awk0:
+        bounce
+        yoffset 30
+    roka "Kyah!"
+    show ax-nana 0-0awk2 with dissolve
+    nana "Did you just..."
+    show ax-roka 0-1awk1 with dissolve
+    "..."
+    nana "We share a bed.{w=0.3} You see me naked every day."
+    show ax-roka:
+        ease 0.5 xoffset -20
+        ease 0.5 xoffset  20
+        ease 0.6 xoffset -20
+        ease 0.8 xoffset  20
+        ease 1.0 xoffset   0
+    roka "Owowowow..."
+    show ax-nana 0-0hap1 with dissolve
+    nana "What am I going to do with you..."
+    nana "W-well, other than this."
+    ###### GLOMP #######
+    show d-sakura-p1 c:
+        parallel:
+            linear 0.3 r1
+        parallel:
+            bounce
+        alpha 1.0
+        parallel:
+            ease 0.4 xoffset 500
+        parallel:
+            ease 0.6 yoffset 1600
+    show d-sakura-p2 c:
+        parallel:
+            linear 0.3 r1
+        parallel:
+            bounce
+        alpha 1.0
+        parallel:
+            ease 0.4 xoffset 300
+        parallel:
+            ease 0.6 yoffset 1600
+    show ax-nana:
+        parallel:
+            linear 0.3 r1
+        parallel:
+            bounce
+        alpha 1.0
+        parallel:
+            ease 0.4 xoffset 400
+        parallel:
+            ease 0.6 yoffset 1600
+        parallel:
+            #yanchor 0.25
+            rotate 0
+            ease 0.6 rotate 60
+    show ax-roka 0-1surp:
+        bounce
+        parallel:
+            ease 0.4 xoffset 400
+        parallel:
+            ease 0.6 yoffset 1600
+        parallel:
+            #xanchor 0.0
+            #yanchor 0.25
+            rotate 0
+            ease 0.6 rotate 60
+    roka "Kyah!"
+    if persistent.sakura == 2:
+        scene b-blackscreen with dissolve
+        jump demo_h_after
+    image cx-demoh 1:
+        ConditionSwitch(
+        "persistent.sakura == 0", Image("images/cx-demoh 1h.png"),
+        "persistent.sakura == 1", Image("images/cx-demoh 1z.png")
+        )
+    image cx-demoh 2:
+        ConditionSwitch(
+        "persistent.sakura == 0", Image("images/cx-demoh 2h.png"),
+        "persistent.sakura == 1", Image("images/cx-demoh 1z.png")
+        )
+    $ txtbox = 30
+    roka "AARGH!! F***!"
+    nana "S***! Are you ok?!"
+    roka "Y-yeah...{w=0.3} I just jammed my arm into my chest."
+    nana "let me have a look."
+    if persistent.sakura == 2:
+        scene b-blackscreen with dissolve
+        jump demo_h_after
+    scene cx-demoh 1 with dissolve
+    roka "I'm fine I swear!"
+    roka "It prolly won't even bruise."
+    nana "hmmm..."
+    roka "W-what?"
+    nana "*Poke*{w=0.2} *Poke*{w=0.2}\n Boobs."
+    roka "Kiyaah!"
+    nana "You're arefully jumpy today."
+    nana "Are you {i}sure{/i} you're up for...{w=0.2} {i}{b}sex?{/b}{/i}"
+    roka "y-{w=0.3} n-no..."
+    nana "*Sigh*"
+    nana "Sweetie you're always like this."
+    roka "I thought I'd be fine."
+    nana "Here."
+    scene cx-demoh 2 with dissolve
+    roka "Kyah!"
+    nana "There, how's that?"
+    nana "Not too much for you is it?"
+    roka "Y-yeah...{w=0.2} This much is ok."
+    "..."
+    "......"
+label demo_h_after:
+    roka "I love you Honey."
+    nana "Awww Sweetie. I love you too."
+    scene b-blackscreen with dissolve
+    #$ txtbox = 64
+    show ax-roka 0-0awk1:
+        c0
+        xoffset -30
+        yoffset 100
+        zoom  0.65
+        alpha 0.0
+    show ax-nana 1-0awk2:
+        r1
+        yoffset 160
+        zoom  0.9
+        alpha 0.0
+    show d-sak-i c with dissolve:
+        alpha 0.5
+        xalign 1.0
+        yalign 0.0
+    show d-sakura-p1 c with dissolve:
+        xpos 0.5
+        ypos 0.45
+        zoom 0.5
+    show d-sakura-p2 c with dissolve:
+        rotate 180
+        xpos 0.3
+        ypos 0.35
+        zoom 0.6
+    show ax-roka with dissolve:
+        alpha 1.0
+    show ax-nana with dissolve:
+        alpha 1.0
+    nana "Soooo{w=0.2}, what did we learn"
+    show ax-roka 0-0awk0 with dissolve
+    roka "S-sex is a big jump up from ear cleaning?"
+    show ax-nana 1-0hap1 with dissolve
+    nana "{i}I dunno, ear cleaning's pretty intimate{/i}"
+    show ax-roka 0-0awk1 with dissolve
+    roka "S-still..."
+    show ax-nana 1-0awk2 with dissolve
+    "..."
+    nana "Hey, lets actually go to bed now."
+    show ax-roka 0-0awk1 with dissolve
+    roka "Y-yeah."
+    show ax-roka 0-0haps with dissolve
+    roka "Can I be little spoon?"
+    show ax-nana 1-0hap1 with dissolve
+    nana "Of course dear."
+    show ax-roka 0-0hap0 with dissolve
+    roka "I love you"
+    nana "I love you too"
+    scene b-blackscreen with dissolve
+    "{i}Demo H-scene End{/i}"
+    menu:
+        "Repeat scene with diferent setting?"
+        "Yes":
+            "Remember to change the setting for a diferent result"
+            scene b-blackscreen with dissolve
+            jump demo_h_spice
+        "No":
+            "Ok, that's the end of the Sakura mode demo"
+    "{i}End of Experimental section{/i}"
+    scene b-blackscreen with dissolve
+    pause 1 # "
+label end_of_wip:
+    "{i}This is the end of the WIP game{/i}"
+    "{i}The VN will now return to the main menu{/i}"
+    scene b-blackscreen with dissolve
+    pause 1 # "
+    return
+label cut: ######   ######   ######   ######   ######   ######
+    scene b-blackscreen with dissolve
+    $ txtbox = 23
     "{i}Allong comes an H scene{/i}"
+    show d-sak-i c:
+        alpha 0.5
+        xalign 1.0
+        yalign 0.0
     show a-sca laugh at c0 with dissolve
     image nips = Solid("#900000", xysize=(400, 200))
     image naps = Text(_("Nip Naps"), size=80)
+    define sdem  = Character("Heroine",color="#804040")
     show nips:
         c0
         ypos 0.65
@@ -495,32 +977,18 @@ label sakura_conf:
         c0
         ypos 0.65
         alpha 0.0
-    if sakura_flag:
-        "Sakura enabled"
-        show d-sakura wall:
-            c0
-            yoffset 600
-            zoom 2.1
-        show nips:
-            alpha 1.0
-        show naps:
-            alpha 1.0
-        show a-sca scared with dissolve
-        pause 0.5
-        show a-sca awkward with dissolve
-    else:
-        "Sakura not enabled"
-        show nips:
-            alpha 1.0
-        show naps:
-            alpha 1.0
-        show a-sca scared with dissolve
-    "{i}End of Experimental section{/i}"
-    scene b-blackscreen with dissolve
-label end_of_wip:
-    "{i}This is the end of the WIP game{/i}"
-    "{i}The VN will now return to the main menu{/i}"
-    scene b-blackscreen with dissolve
+    show d-sakura-p c:
+        c0
+        zoom -0.5
+        alpha 0.0
+    show nips:
+        alpha 1.0
+    show naps:
+        alpha 1.0
+    ""
+    show a-sca scared with dissolve
+    pause 0.5
+    show a-sca awkward with dissolve
     return
 ##############################
   ##  ##  ##  ##  ##  ####
