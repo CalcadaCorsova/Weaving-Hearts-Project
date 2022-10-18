@@ -10,12 +10,12 @@
 default persistent.sakura = 1
 
 ### Predefined
-image d-sak-i c:
-    ConditionSwitch(
-    "persistent.sakura == 0", Image("images/d-sak-i 0.png"),
-    "persistent.sakura == 1", Image("images/d-sak-i 1.png"),
-    "persistent.sakura == 2", Image("images/d-sak-i 2.png")
-    )
+init:
+    image d-sak-i c:
+        ConditionSwitch(
+        "persistent.sakura == 0", Image("images/d-sak-i 0.png"),
+        "persistent.sakura != 0", Image("images/d-sak-i 1.png")
+        )
 
 ### Screen Locations
 ##   x only   ## These only effect left/right position, not up/down
@@ -103,22 +103,22 @@ define geiq = Character("???"            ,color="#eb448f")  # B
 define krn  = Character("Kirin"          ,color="#eb448f")  # B
 define har  = Character("Haruka"         ,color="#e53935")  # C #
 define hars = Character("Yamane Sensei"  ,color="#e53935")  # C #
-define krr  = Character("Kirara"         ,color="#200857")  # D
-define sca  = Character("Scarlet"        ,color="#900000")  # E #
-define sco  = Character("Scotlyn"        ,color="#000000")  # F
+define krr  = Character("Kaori"          ,color="#8859ff")  # D
+define krr  = Character("Kirara"         ,color="#200857")  # E #
+define sca  = Character("Scarlet"        ,color="#900000")  # F
+define sco  = Character("Scotlyn"        ,color="#000000")  # G #
 #Side
 define bra  = Character("Brandon"        ,color="#0094ff")  # A #
 define braq = Character("???"            ,color="#0094ff")  # A #
 define bri  = Character("Brianne"        ,color="#000000")  # B
-define fum  = Character("Fumika"         ,color="#000000")  # C #
-define kao  = Character("Kaori"          ,color="#8859ff")  # D
-define nek  = Character("Nekome"         ,color="#8afdff")  # E #
-define nyk  = Character("Nyeko"          ,color="#8afdff")  # E #
-define nekq = Character("???"            ,color="#8afdff")  # E #
-define sho  = Character("Shoko"          ,color="#000000")  # F
-define rin  = Character("Rin"            ,color="#08080f")  # G #
-define tog  = Character("Toge"           ,color="#007f0e")  # H
-define nad  = Character("Nadeshiko"      ,color="#000000")  # I #
+define fum  = Character("Fumika"         ,color="#ffd700")  # C #
+define nek  = Character("Nekome"         ,color="#8afdff")  # D
+define nyk  = Character("Nyeko"          ,color="#8afdff")  # D
+define nekq = Character("???"            ,color="#8afdff")  # D
+define sho  = Character("Shoko"          ,color="#000000")  # E #
+define rin  = Character("Rin"            ,color="#08080f")  # F
+define tog  = Character("Toge"           ,color="#007f0e")  # G #
+define nad  = Character("Nadeshiko"      ,color="#a4b0e6")  # H
 #NRC
 define ats  = Character("Atsuko"         ,color="#000000")  # A #
 define kan  = Character("Kanou"          ,color="#000000")  # B
@@ -145,20 +145,182 @@ define oto  = Character("Otto"           ,color="#000000")  # G #
 #    e "For example, we might want to have text that is {b}bold{/b}, {i}italic{/i}, {s}struckthrough{/s}, or {u}underlined{/u}."
 
 
+### Character Sprites
+layeredimage a-hikari1:
+        always:
+            Image("a-hikari1_base.png")
+        group o auto:
+            attribute nude:
+                pos (155, 240)
+                zoom 0.3
+                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+            attribute nude:
+                pos (155, 400)
+                zoom 0.3
+                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+        group e auto:
+            attribute neut default
+layeredimage a-hikari2:
+        always:
+            Image("a-hikari2_base.png")
+        group o auto:
+            attribute nude:
+                pos (155, 240)
+                zoom 0.3
+                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+            attribute nude:
+                pos (155, 400)
+                zoom 0.3
+                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+        group e auto:
+            attribute neut default
+layeredimage a-sayaka1:
+        always:
+            Image("a-sayaka1_base.png")
+        group o auto:
+            attribute nude:
+                pos (140, 240)
+                zoom 0.3
+                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+            attribute nude:
+                pos (170, 400)
+                zoom 0.3
+                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+        group e auto:
+            attribute neut default
+layeredimage a-sayaka2:
+        always:
+            Image("a-sayaka2_base.png")
+        group o auto:
+            attribute nude:
+                pos (140, 240)
+                zoom 0.3
+                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+            attribute nude:
+                pos (170, 400)
+                zoom 0.3
+                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+        group e auto:
+            attribute neut default
+layeredimage a-yuzuki1:
+        always:
+            Image("a-yuzuki1_base.png")
+        group o auto:
+            attribute nude:
+                pos (160, 210)
+                zoom 0.35
+                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+            attribute nude:
+                pos (180, 420)
+                zoom 0.3
+                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+        group e auto:
+            attribute neut default
+layeredimage a-yuzuki2:
+        always:
+            Image("a-yuzuki2_base.png")
+        group o auto:
+            attribute nude:
+                pos (160, 210)
+                zoom 0.35
+                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+            attribute nude:
+                pos (180, 420)
+                zoom 0.3
+                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+        group e auto:
+            attribute neut default
+layeredimage a-nana1:
+        always:
+            Image("a-hikari1_base.png")
+        group o auto:
+            attribute nude:
+                pos (155, 240)
+                zoom 0.3
+                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+            attribute nude:
+                pos (155, 400)
+                zoom 0.3
+                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+        group e auto:
+            pos (250, 291)
+            attribute neut default
+layeredimage a-roka1:
+        always:
+            Image("a-roka1_base.png")
+        group o auto:
+            attribute nude:
+                pos (155, 240)
+                zoom 0.3
+                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+            attribute nude:
+                pos (155, 400)
+                zoom 0.3
+                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+        group e auto:
+            attribute neut default
+layeredimage a-roka2:
+        always:
+            Image("a-roka2_base.png")
+        group o auto:
+            attribute nude:
+                pos (155, 240)
+                zoom 0.3
+                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+            attribute nude:
+                pos (155, 400)
+                zoom 0.3
+                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+        group e auto:
+            attribute neut default
+
+
+
 
 label start: ### Start Of Game
     $ txtbox = 00
     "Welcome to the WIP Weaving hearts VN"
+    show a-hikari1 schl emb2
+    pause
+    show a-hikari1 -schl:
+        linear 1.0 r3
+    pause 1.0
+    show a-yuzuki1 mag2
+    pause
+    show a-hikari1 nude:
+        r3
+        bounce
+    show a-yuzuki1 nude:
+        linear 1.0 l3
+    pause 1.0
+    show a-sayaka1 nude
+    pause
+    hide a-hikari1
+    show a-hikari2 nude:
+        r3
+        fx
+    hide a-sayaka1
+    show a-sayaka2 nude:
+        c0
+        fx
+    hide a-yuzuki1
+    show a-yuzuki2 nude:
+        l3
+        fx
+    pause
+    hide a-hikari2
+    hide a-sayaka2
+    hide a-yuzuki2
     #scene tstgry
-    "..."
-    $ txtbox = 22
-    "This uses the first frame style."
-    $ txtbox = 30
-    "This uses the second frame style."
-    define a = Character("Test Character 1", color="#200857", who_outlines=[ (1, "#ffffff") ], what_outlines=[ (1, "#ffffff") ])
-    define b = Character("Test Character 2", color="#08080f", who_outlines=[ (1, "#ffffff") ], what_outlines=[ (1, "#ffffff") ])
-    a "This is Kirara's colour"
-    a "And this is Rin's colour"
+    #"..."
+    #$ txtbox = 22
+    #"This uses the first frame style."
+    #$ txtbox = 30
+    #"This uses the second frame style."
+    #define a = Character("Test Character 1", color="#200857", who_outlines=[ (1, "#ffffff") ], what_outlines=[ (1, "#ffffff") ])
+    #define b = Character("Test Character 2", color="#08080f", who_outlines=[ (1, "#ffffff") ], what_outlines=[ (1, "#ffffff") ])
+    #a "This is Kirara's colour"
+    #b "And this is Rin's colour"
     ### Dev Scene Select
     image ScSeTx = Text(_("Dev Scene select"), size=120)
     show ScSeTx with dissolve:
@@ -682,14 +844,14 @@ label demo_h_start:
         ease 0.8 xoffset  20
         ease 1.0 xoffset   0
     roka "...Hey so this might be weird but I kinda wanted to try something..."
-    nana "What, you want me to try being the big spoon?"
+    nana "What, you want to try being the big spoon?"
     show ax-roka 0-1surp with dissolve
     roka "No...{w=0.1} Not that."
     show ax-roka 0-1awk1 with dissolve
     roka "...{w=0.3} I mean maybe annother tine but I actually meant something else."
     show ax-nana 0-1hap1 with dissolve
     nana "Oh? Go on."
-    roka "When a girl and abnother girl love each other verry much...{w}\n{i}{b}Sex?{/b}{/i}"
+    roka "When a girl and annother girl love each other very much...{w}\n{i}{b}Sex?{/b}{/i}"
     show ax-nana 0-1awk2 with dissolve
     nana "Huh."
     show ax-roka 0-1surp with dissolve
@@ -872,7 +1034,7 @@ label demo_h_spice:  ### Return point for repeating scene
     roka "W-what?"
     nana "*Poke*{w=0.2} *Poke*{w=0.2}\n Boobs."
     roka "Kiyaah!"
-    nana "You're arefully jumpy today."
+    nana "You're awfully jumpy today."
     nana "Are you {i}sure{/i} you're up for...{w=0.2} {i}{b}sex?{/b}{/i}"
     roka "y-{w=0.3} n-no..."
     nana "*Sigh*"
@@ -882,7 +1044,7 @@ label demo_h_spice:  ### Return point for repeating scene
     scene cx-demoh 2 with dissolve
     roka "Kyah!"
     nana "There, how's that?"
-    nana "Not too much for you is it?"
+    nana "Not too much for you is it dear?"
     roka "Y-yeah...{w=0.2} This much is ok."
     "..."
     "......"
