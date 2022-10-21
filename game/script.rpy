@@ -17,126 +17,125 @@ init:
         "persistent.sakura != 0", Image("images/d-sak-i 1.png")
         )
 
-### Screen Locations
-##   x only   ## These only effect left/right position, not up/down
-transform lx:#Just off screen left
-    xanchor 1.0 xpos 0.0
-transform lw:#Just on screen against left wall
-    xalign 0.0
-transform l7:
-    xcenter -0.2
-transform l6:
-    xcenter -0.1
-transform l5:##Split across left wall
-    xcenter 0.0
-transform l4:
-    xcenter 0.1
-transform l3:
-    xcenter 0.2
-transform l2:
-    xcenter 0.3
-transform l1:
-    xcenter 0.4
-transform c0:#Centered
-    xcenter 0.5
-transform r1:
-    xcenter 0.6
-transform r2:
-    xcenter 0.7
-transform r3:
-    xcenter 0.8
-transform r4:
-    xcenter 0.9
-transform r5:#Split across right wall
-    xcenter 1.0
-transform r6:
-    xcenter 1.1
-transform r7:
-    xcenter 1.2
-transform rw:#Just on screen against right wall
-    xalign 1.0
-transform rx:#Just off screen right
-    xcenter 1.0
-transform xl:#Exit Left
-    xcenter -2.0
-transform xr:#Exit Right
-    xcenter 3.0
-    ##   Other   ##
-transform ax:#centered 1 screen height above - For tripple height BGs
-    ypos -.5 yanchor 0.5
-    #ypos 0.0
-transform cx:#Aligned against ceiling
-    ypos 0.0 yalign 0.0
-transform fx:#Aligned against floor
-    ypos 1.0 yalign 1.0
-transform bx:#centered 1 screen height below - For tripple height BGs
-    ypos 1.5 yanchor 0.5
-    #ypos 1.0
-transform cc:# Cerner screen - For Mini-CG / Chibi
-    ycenter 0.5
-    xcenter 0.5
-transform ftr:# Faces sprites toward the right
-    xzoom -1.0
-    ##   Animation   ##
-transform bounce:# makes the sprite jump
-    linear 0.1 yoffset -40
-    pause 0.1
-    linear 0.1 yoffset 0
-transform nod:# makes the sprite bow/nod
-    linear 0.2 yoffset 40
-    pause 0.4
-    linear 0.2 yoffset 0
-transform shake:# makes the sprite shake left/right
-    linear 0.1 xoffset 40
-    linear 0.1 xoffset -40
-    linear 0.1 xoffset 40
-    linear 0.1 xoffset -40
-    linear 0.1 xoffset 40
-    linear 0.1 xoffset -40
+init: ### Screen Locations
+    ##   x only   ## These only effect left/right position, not up/down
+    transform lx:#Just off screen left
+        xanchor 1.0 xpos 0.0
+    transform lw:#Just on screen against left wall
+        xalign 0.0
+    transform l7:
+        xcenter -0.2
+    transform l6:
+        xcenter -0.1
+    transform l5:##Split across left wall
+        xcenter 0.0
+    transform l4:
+        xcenter 0.1
+    transform l3:
+        xcenter 0.2
+    transform l2:
+        xcenter 0.3
+    transform l1:
+        xcenter 0.4
+    transform c0:#Centered
+        xcenter 0.5
+    transform r1:
+        xcenter 0.6
+    transform r2:
+        xcenter 0.7
+    transform r3:
+        xcenter 0.8
+    transform r4:
+        xcenter 0.9
+    transform r5:#Split across right wall
+        xcenter 1.0
+    transform r6:
+        xcenter 1.1
+    transform r7:
+        xcenter 1.2
+    transform rw:#Just on screen against right wall
+        xalign 1.0
+    transform rx:#Just off screen right
+        xcenter 1.0
+    transform xl:#Exit Left
+        xcenter -2.0
+    transform xr:#Exit Right
+        xcenter 3.0
+        ##   Other   ##
+    transform ax:#centered 1 screen height above - For tripple height BGs
+        ypos -.5 yanchor 0.5
+        #ypos 0.0
+    transform cx:#Aligned against ceiling
+        ypos 0.0
+    transform fx:#Aligned against floor
+        ypos 1.0
+    transform bx:#centered 1 screen height below - For tripple height BGs
+        ypos 1.5 yanchor 0.5
+        #ypos 1.0
+    transform cc:# Cerner screen - For Mini-CG / Chibi
+        ycenter 0.5
+        xcenter 0.5
+    transform ftr:# Faces sprites toward the right
+        xzoom -1.0
+init: ### Sprite Animation
+    transform bounce:# makes the sprite jump
+        linear 0.1 yoffset -80
+        pause 0.1
+        linear 0.1 yoffset 0
+    transform nod:# makes the sprite bow/nod
+        linear 0.2 yoffset 80
+        pause 0.4
+        linear 0.2 yoffset 0
+    transform shake:# makes the sprite shake left/right
+        linear 0.1 xoffset 40
+        linear 0.1 xoffset -40
+        linear 0.1 xoffset 40
+        linear 0.1 xoffset -40
+        linear 0.1 xoffset 40
+        linear 0.1 xoffset -40
 
-
-### Character Shorthands
-#main
-define mc   = Character("MC"             ,color="#267f00")  # A #
-define gei  = Character("Geisha"         ,color="#eb448f")  # B
-define geiq = Character("???"            ,color="#eb448f")  # B
-define krn  = Character("Kirin"          ,color="#eb448f")  # B
-define har  = Character("Haruka"         ,color="#e53935")  # C #
-define hars = Character("Yamane Sensei"  ,color="#e53935")  # C #
-define krr  = Character("Kaori"          ,color="#8859ff")  # D
-define krr  = Character("Kirara"         ,color="#200857")  # E #
-define sca  = Character("Scarlet"        ,color="#900000")  # F
-define sco  = Character("Scotlyn"        ,color="#000000")  # G #
-#Side
-define bra  = Character("Brandon"        ,color="#0094ff")  # A #
-define braq = Character("???"            ,color="#0094ff")  # A #
-define bri  = Character("Brianne"        ,color="#000000")  # B
-define fum  = Character("Fumika"         ,color="#ffd700")  # C #
-define nek  = Character("Nekome"         ,color="#8afdff")  # D
-define nyk  = Character("Nyeko"          ,color="#8afdff")  # D
-define nekq = Character("???"            ,color="#8afdff")  # D
-define sho  = Character("Shoko"          ,color="#000000")  # E #
-define rin  = Character("Rin"            ,color="#08080f")  # F
-define tog  = Character("Toge"           ,color="#007f0e")  # G #
-define nad  = Character("Nadeshiko"      ,color="#a4b0e6")  # H
-#NRC
-define ats  = Character("Atsuko"         ,color="#000000")  # A #
-define kan  = Character("Kanou"          ,color="#000000")  # B
-define sjk  = Character("Malcolm"        ,color="#000000")  # C #
-define sjks = Character("Sinclair Sensei",color="#000000")  # C #
-define sor  = Character("Sora"           ,color="#000000")  # D
-define tam  = Character("Tamashii"       ,color="#000000")  # E #
-define yur  = Character("Yuri"           ,color="#00887a")  # F
-define yurs = Character("Karakada Sensei",color="#00887a")  # F
-#WW
-define alf  = Character("Alfred"         ,color="#000000")  # A #
-define asm  = Character("Asmund"         ,color="#000000")  # B
-define dad  = Character("Dad"            ,color="#000000")  # C #
-define may  = Character("Mayor"          ,color="#000000")  # D
-define sam  = Character("Sams"           ,color="#000000")  # E #
-#???
-define mar  = Character("Mari"           ,color="#000000")  # F
-define oto  = Character("Otto"           ,color="#000000")  # G #
+init: ### Character Shorthands
+    #main
+    define mc   = Character("MC"             ,color="#267f00")  # A #
+    define gei  = Character("Geisha"         ,color="#eb448f")  # B
+    define geiq = Character("???"            ,color="#eb448f")  # B
+    define krn  = Character("Kirin"          ,color="#eb448f")  # B
+    define har  = Character("Haruka"         ,color="#e53935")  # C #
+    define hars = Character("Yamane Sensei"  ,color="#e53935")  # C #
+    define krr  = Character("Kaori"          ,color="#8859ff")  # D
+    define krr  = Character("Kirara"         ,color="#200857")  # E #
+    define sca  = Character("Scarlet"        ,color="#900000")  # F
+    define sco  = Character("Scotlyn"        ,color="#000000")  # G #
+    #Side
+    define bra  = Character("Brandon"        ,color="#0094ff")  # A #
+    define braq = Character("???"            ,color="#0094ff")  # A #
+    define bri  = Character("Brianne"        ,color="#000000")  # B
+    define fum  = Character("Fumika"         ,color="#ffd700")  # C #
+    define nek  = Character("Nekome"         ,color="#8afdff")  # D
+    define nyk  = Character("Nyeko"          ,color="#8afdff")  # D
+    define nekq = Character("???"            ,color="#8afdff")  # D
+    define sho  = Character("Shoko"          ,color="#000000")  # E #
+    define rin  = Character("Rin"            ,color="#08080f")  # F
+    define tog  = Character("Toge"           ,color="#007f0e")  # G #
+    define nad  = Character("Nadeshiko"      ,color="#a4b0e6")  # H
+    #NRC
+    define ats  = Character("Atsuko"         ,color="#000000")  # A #
+    define kan  = Character("Kanou"          ,color="#000000")  # B
+    define sjk  = Character("Malcolm"        ,color="#000000")  # C #
+    define sjks = Character("Sinclair Sensei",color="#000000")  # C #
+    define sor  = Character("Sora"           ,color="#000000")  # D
+    define tam  = Character("Tamashii"       ,color="#000000")  # E #
+    define yur  = Character("Yuri"           ,color="#00887a")  # F
+    define yurs = Character("Karakada Sensei",color="#00887a")  # F
+    #WW
+    define alf  = Character("Alfred"         ,color="#000000")  # A #
+    define asm  = Character("Asmund"         ,color="#000000")  # B
+    define dad  = Character("Dad"            ,color="#000000")  # C #
+    define may  = Character("Mayor"          ,color="#000000")  # D
+    define sam  = Character("Sams"           ,color="#000000")  # E #
+    #???
+    define mar  = Character("Mari"           ,color="#000000")  # F
+    define oto  = Character("Otto"           ,color="#000000")  # G #
 
 ## Misc
 
@@ -145,172 +144,201 @@ define oto  = Character("Otto"           ,color="#000000")  # G #
 #    e "For example, we might want to have text that is {b}bold{/b}, {i}italic{/i}, {s}struckthrough{/s}, or {u}underlined{/u}."
 
 
-### Character Sprites
-layeredimage a-hikari1:
+init: ### Character Sprites
+    layeredimage a-hikari1:
+            always:
+                Image("a-hikari1_base.png")
+            group o auto:
+                attribute nude:
+                    pos (155, 240)
+                    zoom 0.3
+                    ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+                attribute nude:
+                    pos (155, 400)
+                    zoom 0.3
+                    ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+            group e auto:
+                attribute neut default
+    layeredimage a-hikari2:
+            always:
+                Image("a-hikari2_base.png")
+            group o auto:
+                attribute nude:
+                    pos (155, 240)
+                    zoom 0.3
+                    ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+                attribute nude:
+                    pos (155, 400)
+                    zoom 0.3
+                    ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+            group e auto:
+                attribute neut default
+    layeredimage a-sayaka1:
+            always:
+                Image("a-sayaka1_base.png")
+            group o auto:
+                attribute nude:
+                    pos (140, 240)
+                    zoom 0.3
+                    ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+                attribute nude:
+                    pos (170, 400)
+                    zoom 0.3
+                    ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+            group e auto:
+                attribute neut default
+    layeredimage a-sayaka2:
+            always:
+                Image("a-sayaka2_base.png")
+            group o auto:
+                attribute nude:
+                    pos (140, 240)
+                    zoom 0.3
+                    ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+                attribute nude:
+                    pos (170, 400)
+                    zoom 0.3
+                    ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+            group e auto:
+                attribute neut default
+    layeredimage a-yuzuki1:
+            always:
+                Image("a-yuzuki1_base.png")
+            group o auto:
+                attribute nude:
+                    pos (160, 210)
+                    zoom 0.35
+                    ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+                attribute nude:
+                    pos (180, 420)
+                    zoom 0.3
+                    ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+            group e auto:
+                attribute neut default
+    layeredimage a-yuzuki2:
+            always:
+                Image("a-yuzuki2_base.png")
+            group o auto:
+                attribute nude:
+                    pos (160, 210)
+                    zoom 0.35
+                    ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+                attribute nude:
+                    pos (180, 420)
+                    zoom 0.3
+                    ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+            group e auto:
+                attribute neut default
+    layeredimage a-nana:
         always:
-            Image("a-hikari1_base.png")
+            Image("a-nana_base.png")
         group o auto:
-            attribute nude:
-                pos (155, 240)
+            attribute znak:
                 zoom 0.3
-                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
-            attribute nude:
-                pos (155, 400)
+                ConditionSwitch("persistent.sakura != 0", Image("images/d-sakura-p 1.png",pos=(420-(3*30), 900-(3*30)))   ,   "persistent.sakura == 0", Image("images/d-sakura-p 0.png"))
+            attribute znak:
                 zoom 0.3
-                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+                ConditionSwitch("persistent.sakura != 0", Image("images/d-sakura-p 1.png",pos=(590-(3*30), 900-(3*30)))   ,   "persistent.sakura == 0", Image("images/d-sakura-p 0.png"))
+            attribute znak:
+                zoom 0.3
+                ConditionSwitch("persistent.sakura != 0", Image("images/d-sakura-p 1.png",pos=(550-(3*30), 1450-(3*30)))   ,   "persistent.sakura == 0", Image("images/d-sakura-p 0.png"))
         group e auto:
-            attribute neut default
-layeredimage a-hikari2:
+            attribute hap1 default
+        attribute p_hold:
+            Image("a-nana_p_hold.png")
+    layeredimage a-roka:
         always:
-            Image("a-hikari2_base.png")
+            Image("a-roka_base.png")
         group o auto:
-            attribute nude:
-                pos (155, 240)
+            attribute 1znak:
+                "a-roka_o_1znak.png"
+            attribute 1znak:
                 zoom 0.3
-                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
-            attribute nude:
-                pos (155, 400)
+                ConditionSwitch("persistent.sakura != 0", Image("images/d-sakura-p 1.png",pos=(500-(3*30), 800-(3*30)))   ,   "persistent.sakura == 0", Image("images/d-sakura-p 0.png"))
+            attribute 1znak:
                 zoom 0.3
-                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
+                ConditionSwitch("persistent.sakura != 0", Image("images/d-sakura-p 1.png",pos=(660-(3*30), 800-(3*30)))   ,   "persistent.sakura == 0", Image("images/d-sakura-p 0.png"))
+            attribute 1znak:
+                zoom 0.3
+                ConditionSwitch("persistent.sakura != 0", Image("images/d-sakura-p 1.png",pos=(550-(3*30), 1350-(3*30)))   ,   "persistent.sakura == 0", Image("images/d-sakura-p 0.png"))
+            attribute 2znak:
+                "a-roka_o_2znak.png"
+            attribute 2znak:
+                zoom 0.3
+                ConditionSwitch("persistent.sakura != 0", Image("images/d-sakura-p 1.png",pos=(500-(3*30), 800-(3*30)))   ,   "persistent.sakura == 0", Image("images/d-sakura-p 0.png"))
+            attribute 2znak:
+                zoom 0.3
+                ConditionSwitch("persistent.sakura != 0", Image("images/d-sakura-p 1.png",pos=(660-(3*30), 800-(3*30)))   ,   "persistent.sakura == 0", Image("images/d-sakura-p 0.png"))
+            attribute 2znak:
+                zoom 0.3
+                ConditionSwitch("persistent.sakura != 0", Image("images/d-sakura-p 1.png",pos=(550-(3*30), 1350-(3*30)))   ,   "persistent.sakura == 0", Image("images/d-sakura-p 0.png"))
         group e auto:
-            attribute neut default
-layeredimage a-sayaka1:
+            attribute hap1 default
+    ########################    ########################    ########################
+    layeredimage x-sakura_check_template_step_1:
         always:
-            Image("a-sayaka1_base.png")
-        group o auto:
-            attribute nude:
-                pos (140, 240)
-                zoom 0.3
-                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
-            attribute nude:
-                pos (170, 400)
-                zoom 0.3
-                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
-        group e auto:
-            attribute neut default
-layeredimage a-sayaka2:
+            Image("a-roka_base.png")    #Naked sprite you want to censor
         always:
-            Image("a-sayaka2_base.png")
-        group o auto:
-            attribute nude:
-                pos (140, 240)
-                zoom 0.3
-                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
-            attribute nude:
-                pos (170, 400)
-                zoom 0.3
-                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
-        group e auto:
-            attribute neut default
-layeredimage a-yuzuki1:
+            Image("xdbg-grid.png")       #Grid with increments every 100px
         always:
-            Image("a-yuzuki1_base.png")
-        group o auto:
-            attribute nude:
-                pos (160, 210)
-                zoom 0.35
-                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
-            attribute nude:
-                pos (180, 420)
-                zoom 0.3
-                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
-        group e auto:
-            attribute neut default
-layeredimage a-yuzuki2:
+            zoom 0.3                     #~Distance-Between-Nips/300 to 1 Decimal Place
+            pos(500-(3*30), 800-(3*30)) #left-nip (xpos+15zoom, ypos25zoom)
+            Image("xdbg-sakura.png") #Sakura with 100px grid scaled with sprite
         always:
-            Image("a-yuzuki2_base.png")
-        group o auto:
-            attribute nude:
-                pos (160, 210)
-                zoom 0.35
-                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
-            attribute nude:
-                pos (180, 420)
-                zoom 0.3
-                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
-        group e auto:
-            attribute neut default
-layeredimage a-nana1:
+            zoom 0.3                        # #zoom same as above
+            pos(660-(3*30), 800-(3*30))    # #vagoo (xpos-300zoom, ypos-300zoom)
+            Image("xdbg-sakura.png")
         always:
-            Image("a-hikari1_base.png")
-        group o auto:
-            attribute nude:
-                pos (155, 240)
-                zoom 0.3
-                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
-            attribute nude:
-                pos (155, 400)
-                zoom 0.3
-                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
-        group e auto:
-            pos (250, 291)
-            attribute neut default
-layeredimage a-roka1:
+            zoom 0.3                        # #zoom same as above
+            pos(550-(3*30), 1350-(3*30))    # #vagoo (xpos-300zoom, ypos-300zoom)
+            Image("xdbg-sakura.png")
+    layeredimage x-sakura_check_template_step_2:
         always:
-            Image("a-roka1_base.png")
+            Image("a-roka_base.png")    #Naked sprite you want to censor
         group o auto:
-            attribute nude:
-                pos (155, 240)
+            attribute 1znak:
+                "a-roka_o_1znak.png" # If applicable
+            attribute 1znak:#copy from above
                 zoom 0.3
-                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
-            attribute nude:
-                pos (155, 400)
+                ConditionSwitch("persistent.sakura != 0", Image("images/d-sakura-p 1.png",pos=(500-(3*30), 800-(3*30)))   ,   "persistent.sakura == 0", Image("images/d-sakura-p 0.png"))
+            attribute 1znak:#copy from above
                 zoom 0.3
-                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
-        group e auto:
-            attribute neut default
-layeredimage a-roka2:
-        always:
-            Image("a-roka2_base.png")
-        group o auto:
-            attribute nude:
-                pos (155, 240)
+                ConditionSwitch("persistent.sakura != 0", Image("images/d-sakura-p 1.png",pos=(660-(3*30), 800-(3*30)))   ,   "persistent.sakura == 0", Image("images/d-sakura-p 0.png"))
+            attribute 1znak:#copy from above
                 zoom 0.3
-                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
-            attribute nude:
-                pos (155, 400)
-                zoom 0.3
-                ConditionSwitch("persistent.sakura == 0", Image("images/d-sakura-p 0.png"),"persistent.sakura != 0", Image("images/d-sakura-p 1.png"))
-        group e auto:
-            attribute neut default
+                ConditionSwitch("persistent.sakura != 0", Image("images/d-sakura-p 1.png",pos=(550-(3*30), 1350-(3*30)))   ,   "persistent.sakura == 0", Image("images/d-sakura-p 0.png"))
+label spritecheck:
+    scene b-blackscreen with dissolve
+    "Sprite checker"
+    window hide
+    show x-sakura_check_template_step_1:
+        l3
+        cx
+        zoom 0.5
+    pause
+    show x-sakura_check_template_step_2 1znak:
+        c0
+        cx
+        zoom 0.5
+    pause
+    show a-roka 1znak:
+        r3
+        cx
+        zoom 0.5
+    pause
+    window auto
+    scene b-blackscreen with dissolve
+    jump devmen
 
-
-
+#show a-roka2 casu  #will show roka with outfit "casual"
+#show a-roka2 work  #will change outfit to "work"
+#show a-roka2 -work #will remove outfit work but WILL NOT correctly show a nude srite
+#show a-roka2 nude  #will change outfit to "nude" correctly
 
 label start: ### Start Of Game
     $ txtbox = 00
     "Welcome to the WIP Weaving hearts VN"
-    show a-hikari1 schl emb2
-    pause
-    show a-hikari1 -schl:
-        linear 1.0 r3
-    pause 1.0
-    show a-yuzuki1 mag2
-    pause
-    show a-hikari1 nude:
-        r3
-        bounce
-    show a-yuzuki1 nude:
-        linear 1.0 l3
-    pause 1.0
-    show a-sayaka1 nude
-    pause
-    hide a-hikari1
-    show a-hikari2 nude:
-        r3
-        fx
-    hide a-sayaka1
-    show a-sayaka2 nude:
-        c0
-        fx
-    hide a-yuzuki1
-    show a-yuzuki2 nude:
-        l3
-        fx
-    pause
-    hide a-hikari2
-    hide a-sayaka2
-    hide a-yuzuki2
+    window hide
     #scene tstgry
     #"..."
     #$ txtbox = 22
@@ -322,32 +350,36 @@ label start: ### Start Of Game
     #a "This is Kirara's colour"
     #b "And this is Rin's colour"
     ### Dev Scene Select
+label devmen: ### Dev Menu
     image ScSeTx = Text(_("Dev Scene select"), size=120)
     show ScSeTx with dissolve:
         c0
         ypos 0.0
-menu:
-    "Prologue Intro":
-        hide ScSeTx with dissolve
-        jump prologue_intro
-    "Prologue Concert Q&A":
-        hide ScSeTx with dissolve
-        jump prologue_qna
-    "Prologue Concert End":
-        hide ScSeTx with dissolve
-        jump prologue_concert_end
-    "Wholesome Library Scene":
-        hide ScSeTx with dissolve
-        jump wholesome_library
-    "Sakura Mode Explanation":
-        hide ScSeTx with dissolve
-        jump experimental
-    "Sakura Mode Demo":
-        hide ScSeTx with dissolve
-        jump demo_h_start
-    "End":
-        hide ScSeTx with dissolve
-        jump end_of_wip
+    menu:
+        "Dev Sprite Checker":
+            hide ScSeTx with dissolve
+            jump spritecheck
+        "Prologue Intro":
+            hide ScSeTx with dissolve
+            jump prologue_intro
+        "Prologue Concert Q&A":
+            hide ScSeTx with dissolve
+            jump prologue_qna
+        "Prologue Concert End":
+            hide ScSeTx with dissolve
+            jump prologue_concert_end
+        "Wholesome Library Scene":
+            hide ScSeTx with dissolve
+            jump wholesome_library
+        "Sakura Mode Explanation":
+            hide ScSeTx with dissolve
+            jump experimental
+        "Sakura Mode Demo":
+            hide ScSeTx with dissolve
+            jump demo_h_start
+        "End":
+            hide ScSeTx with dissolve
+            jump end_of_wip
 label scene_bookends: ## Copy when making new scene
     "{i}scene_bookend start{/i}"
     scene b-blackscreen with dissolve
@@ -810,211 +842,162 @@ label demo_h_start:
     "{i}Demo H-scene{/i}"
     define roka = Character("Roka"  ,color="#e07070")
     define nana = Character("Nanao" ,color="#b06060")
-    show ax-roka 0-1hap1 with dissolve:
+    show a-roka 1casu hap1 with dissolve:
         l2
-        yoffset 30
-        zoom 0.65
-    show ax-nana 0-1hap1 with dissolve:
+        cx
+        zoom 0.75
+    show a-nana 1work hap1 with dissolve:
         r2
-        yoffset 60
-        zoom 0.9
+        cx
+        zoom 0.75
     roka "I really enjoyed this evening dear."
     nana "Awww sweetie, Me too."
     nana "It's nice to do someting special from time to time."
-    show ax-roka 0-1haps
+    show a-roka 2casu haps
     roka "Y-yeah."
-    show ax-nana:
+    show a-nana hap1:
         ease 0.8 c0
-    show ax-roka 1-1hap0 with dissolve
-    show ax-roka:
+    show a-roka 1casu hap0 with dissolve
+    show a-roka:
         ease 0.5 l1
     nana "Awww, come here."
     "..."
-    show ax-nana:
+    show a-nana:
         ease 0.8 r1
     nana "It's about time we turn in for the night."
-    show ax-roka 0-1awk1  with dissolve
+    show a-roka awk1  with dissolve
     roka "Um..."
-    show ax-nana 0-1awk2 with dissolve
+    show a-nana awk2 with dissolve
     nana "Yes dear?"
-    show ax-roka:
+    show a-roka:
+        ease 0.4 xoffset -20
+        ease 0.4 xoffset  20
         ease 0.5 xoffset -20
-        ease 0.5 xoffset  20
-        ease 0.6 xoffset -20
-        ease 0.8 xoffset  20
-        ease 1.0 xoffset   0
+        ease 0.6 xoffset  20
+        ease 0.4 xoffset   0
     roka "...Hey so this might be weird but I kinda wanted to try something..."
     nana "What, you want to try being the big spoon?"
-    show ax-roka 0-1surp with dissolve
+    show a-roka surp with dissolve
     roka "No...{w=0.1} Not that."
-    show ax-roka 0-1awk1 with dissolve
+    show a-roka 1casu awk1 with dissolve
     roka "...{w=0.3} I mean maybe annother tine but I actually meant something else."
-    show ax-nana 0-1hap1 with dissolve
+    show a-nana hap1 with dissolve
     nana "Oh? Go on."
     roka "When a girl and annother girl love each other very much...{w}\n{i}{b}Sex?{/b}{/i}"
-    show ax-nana 0-1awk2 with dissolve
+    show a-nana awk2 with dissolve
     nana "Huh."
-    show ax-roka 0-1surp with dissolve
+    show a-roka surp with dissolve
     roka "I-I mean only if you're ok with it."
-    show ax-roka 0-1awk0 with dissolve
+    show a-roka awk0 with dissolve
     nana "I mean I'm not...{w=0.3} opposed...{w=0.3} exactly..."
     nana "I thought you say you were happy without?"
-    show ax-roka 0-1awk1 with dissolve
+    show a-roka awk1 with dissolve
     roka "I am.{w=0.3} I...{w=0.3} I guess I just got curious?"
     nana "Well I can't say I've never considered it."
-    show ax-nana 0-1hap1 with dissolve
+    show a-nana hap1 with dissolve
     nana "Sure, I guess we can try that."
-    show ax-roka 0-1surp with dissolve
+    show a-roka 2casu surp with dissolve
     roka "really."
-    show ax-roka 0-1hap2 with dissolve
+    show a-roka hap2:
+        bounce
+        cx
     roka "Thanks Honey!"
     scene b-blackscreen with dissolve
-    show ax-roka 0-1awk1 with dissolve:
+    show a-roka 1casu awk1 with dissolve:
         r2
-        yoffset 30
-        xzoom -0.65
-        yzoom  0.65
-    show ax-nana 0-1hap1 with dissolve:
+        ftr
+        zoom 0.75
+    show a-nana 1work hap1 with dissolve:
         l1
-        yoffset 60
-        xzoom -0.9
-        yzoom  0.9
+        ftr
+        zoom 0.75
     show d-sak-i 3 with dissolve:
         alpha 0.5
         xalign 1.0
         yalign 0.0
     "..."
     roka "Soooo....{w=0.3} how does this work?"
-    show ax-nana 0-1awk2 with dissolve
+    show a-nana awk2 with dissolve
     nana "You're the one who asked yet you don't know how sex works?"
-    show ax-roka 0-1awk0 with dissolve
+    show a-roka awk0 with dissolve
     roka "I know how sex {i}normally{/i} works but... {w}how does it work between women?"
 label demo_h_spice:  ### Return point for repeating scene
     $ txtbox = 30
-    show ax-roka 0-1awk0 with dissolve:
+    show a-roka awk0 with dissolve:
         r2
-        yoffset 30
-        xzoom -0.65
-        yzoom  0.65
-    show ax-nana 0-1hap1 with dissolve:
+        zoom  0.75
+    show a-nana hap1 with dissolve:
         l1
-        yoffset 60
-        xzoom -0.9
-        yzoom  0.9
+        zoom  0.75
     show d-sak-i 3 with dissolve:
         alpha 0.5
         xalign 1.0
         yalign 0.0
     nana "Geez, you're hopeless."
     nana "I'll google it."
-    show ax-roka 0-1awk1 with dissolve
+    show a-roka 2casu awk1 with dissolve
     "..."
-    show ax-nana 0-1awk2 with dissolve
+    show a-nana awk2 with dissolve
     nana "Ewww, I'm vetiong that one."
     "..."
-    show ax-nana 0-1hap1 with dissolve
+    show a-nana hap1 with dissolve
     nana "Hmmm... This could work."
-    #roka "Sorry I'm kinda useless at this"
-    #nana "I've never done this either..."
-    "..."
-    image d-sakura-p1 c:
-        ConditionSwitch(
-        "persistent.sakura == 0", Image("images/d-sakura-p 0.png"),
-        "persistent.sakura == 1", Image("images/d-sakura-p 1.png"),
-        "persistent.sakura == 2", Image("images/d-sakura-p 1.png")
-        )
-    image d-sakura-p2 c:
-        ConditionSwitch(
-        "persistent.sakura == 0", Image("images/d-sakura-p 0.png"),
-        "persistent.sakura == 1", Image("images/d-sakura-p 1.png"),
-        "persistent.sakura == 2", Image("images/d-sakura-p 1.png")
-        )
-    show d-sakura-p1 c:
-        xpos 0.25
-        yalign 0.6
-        zoom 0.5
-    show d-sakura-p2 c:
-        xpos 0.25
-        yanchor 0.5
-        ypos 0.9
-        zoom 0.5
-    show ax-nana 0-0hap1 with dissolve
+    show a-nana znak hap1 with dissolve
     show d-sak-i c
-    show ax-roka 0-1awk0:
+    show a-roka 1casu awk0:
         bounce
-        yoffset 30
     roka "Kyah!"
-    show ax-nana 0-0awk2 with dissolve
+    show a-nana awk2 with dissolve
     nana "Did you just..."
-    show ax-roka 0-1awk1 with dissolve
+    show a-roka 2casu awk1 with dissolve
     "..."
     nana "We share a bed.{w=0.3} You see me naked every day."
-    show ax-roka:
+    show a-roka:
+        ease 0.4 xoffset -20
+        ease 0.4 xoffset  20
         ease 0.5 xoffset -20
-        ease 0.5 xoffset  20
-        ease 0.6 xoffset -20
-        ease 0.8 xoffset  20
-        ease 1.0 xoffset   0
+        ease 0.6 xoffset  20
+        ease 0.4 xoffset   0
     roka "Owowowow..."
-    show ax-nana 0-0hap1 with dissolve
+    show a-nana hap1 with dissolve
     nana "What am I going to do with you..."
     nana "W-well, other than this."
-    ###### GLOMP #######
-    show d-sakura-p1 c:
+label demo_h_glomp: ###### GLOMP #######
+    show a-nana:
         parallel:
-            linear 0.3 r1
+            linear 0.3 r2
+            ease 0.3 xoffset 400
         parallel:
-            bounce
-        alpha 1.0
+            ease 0.3 yoffset -400
+            ease 0.9 yoffset 1600
+        parallel:
+            pause 0.3
+            rotate_pad False
+            rotate 0
+            ease 0.6 rotate 60
+    show a-roka surp:
+        pause 0.15
         parallel:
             ease 0.4 xoffset 500
         parallel:
-            ease 0.6 yoffset 1600
-    show d-sakura-p2 c:
-        parallel:
-            linear 0.3 r1
-        parallel:
-            bounce
-        alpha 1.0
-        parallel:
-            ease 0.4 xoffset 300
-        parallel:
-            ease 0.6 yoffset 1600
-    show ax-nana:
-        parallel:
-            linear 0.3 r1
-        parallel:
-            bounce
-        alpha 1.0
-        parallel:
-            ease 0.4 xoffset 400
-        parallel:
+            ease 0.15 yoffset -100
+            pause 0.05
             ease 0.6 yoffset 1600
         parallel:
-            #yanchor 0.25
-            rotate 0
-            ease 0.6 rotate 60
-    show ax-roka 0-1surp:
-        bounce
-        parallel:
-            ease 0.4 xoffset 400
-        parallel:
-            ease 0.6 yoffset 1600
-        parallel:
-            #xanchor 0.0
-            #yanchor 0.25
+            pause 0.15
+            rotate_pad False
             rotate 0
             ease 0.6 rotate 60
     roka "Kyah!"
-    if persistent.sakura == 2:
+    if persistent.sakura == 2: ## Skip Check
         scene b-blackscreen with dissolve
         jump demo_h_after
-    image cx-demoh 1:
+    image cxdemoh 1:
         ConditionSwitch(
         "persistent.sakura == 0", Image("images/cx-demoh 1h.png"),
         "persistent.sakura == 1", Image("images/cx-demoh 1z.png")
         )
-    image cx-demoh 2:
+    image cxdemoh 2:
         ConditionSwitch(
         "persistent.sakura == 0", Image("images/cx-demoh 2h.png"),
         "persistent.sakura == 1", Image("images/cx-demoh 1z.png")
@@ -1024,10 +1007,10 @@ label demo_h_spice:  ### Return point for repeating scene
     nana "S***! Are you ok?!"
     roka "Y-yeah...{w=0.3} I just jammed my arm into my chest."
     nana "let me have a look."
-    if persistent.sakura == 2:
+    if persistent.sakura == 2: ## Skip Check
         scene b-blackscreen with dissolve
         jump demo_h_after
-    scene cx-demoh 1 with dissolve
+    scene cxdemoh 1 with dissolve
     roka "I'm fine I swear!"
     roka "It prolly won't even bruise."
     nana "hmmm..."
@@ -1041,7 +1024,7 @@ label demo_h_spice:  ### Return point for repeating scene
     nana "Sweetie you're always like this."
     roka "I thought I'd be fine."
     nana "Here."
-    scene cx-demoh 2 with dissolve
+    scene cxdemoh 2 with dissolve
     roka "Kyah!"
     nana "There, how's that?"
     nana "Not too much for you is it dear?"
@@ -1053,51 +1036,42 @@ label demo_h_after:
     nana "Awww Sweetie. I love you too."
     scene b-blackscreen with dissolve
     #$ txtbox = 64
-    show ax-roka 0-0awk1:
+    show a-roka 2znak awk1:
         c0
-        xoffset -30
-        yoffset 100
-        zoom  0.65
+        xoffset -49
+        yoffset 104
+        zoom  0.75
         alpha 0.0
-    show ax-nana 1-0awk2:
+    show a-nana p_hold znak awk2:
         r1
-        yoffset 160
-        zoom  0.9
+        yoffset 100
+        zoom  0.7
         alpha 0.0
     show d-sak-i c with dissolve:
         alpha 0.5
         xalign 1.0
         yalign 0.0
-    show d-sakura-p1 c with dissolve:
-        xpos 0.5
-        ypos 0.45
-        zoom 0.5
-    show d-sakura-p2 c with dissolve:
-        rotate 180
-        xpos 0.3
-        ypos 0.35
-        zoom 0.6
-    show ax-roka with dissolve:
+    show a-roka with dissolve:
         alpha 1.0
-    show ax-nana with dissolve:
+    show a-nana with dissolve:
         alpha 1.0
     nana "Soooo{w=0.2}, what did we learn"
-    show ax-roka 0-0awk0 with dissolve
+    show a-roka awk0 with dissolve
     roka "S-sex is a big jump up from ear cleaning?"
-    show ax-nana 1-0hap1 with dissolve
+    show a-nana hap1 with dissolve
     nana "{i}I dunno, ear cleaning's pretty intimate{/i}"
-    show ax-roka 0-0awk1 with dissolve
+    show a-roka awk1 with dissolve
     roka "S-still..."
-    show ax-nana 1-0awk2 with dissolve
+    show a-nana awk2 with dissolve
     "..."
     nana "Hey, lets actually go to bed now."
-    show ax-roka 0-0awk1 with dissolve
+    show a-roka awk1 with dissolve
     roka "Y-yeah."
-    show ax-roka 0-0haps with dissolve
+    show a-roka hap2 with dissolve
     roka "Can I be little spoon?"
-    show ax-nana 1-0hap1 with dissolve
+    show a-nana hap1 with dissolve
     nana "Of course dear."
-    show ax-roka 0-0hap0 with dissolve
+    show a-roka hap0 with dissolve
     roka "I love you"
     nana "I love you too"
     scene b-blackscreen with dissolve
