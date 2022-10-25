@@ -338,6 +338,23 @@ label spritecheck:
 label start: ### Start Of Game
     $ txtbox = 00
     "Welcome to the WIP Weaving hearts VN"
+    show ax-roka1_o_1zpan:
+        cx
+        l4
+        zoom 1.0
+    show ax-roka2_o_1zpan:
+        cx
+        l1
+        zoom 0.75
+    show ax-roka3_o_1zpan:
+        cx
+        r2
+        zoom 0.5
+    show ax-roka4_o_1zpan:
+        cx
+        r4
+        zoom 0.25
+    "\nSprites at 100\%, 75\%, 50\%, and 25\% size"
     window hide
     #scene tstgry
     #"..."
