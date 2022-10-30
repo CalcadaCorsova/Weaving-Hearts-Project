@@ -171,6 +171,30 @@ style say_dialogue:
     xsize gui.dialogue_width
     ypos gui.dialogue_ypos
 
+## Flowchart Screen ################################################################
+##
+## This is a WIP screen for a route spreadsheet
+##
+## Original Source:
+## https://www.reddit.com/r/RenPy/comments/flr39e/flowcharts_possible/
+
+screen flowchart:
+    tag menu
+    label Text(_("Dev Scene Select"), size=120, xpos=0.42)
+    use navigation
+    vbox:
+        xalign 0.4
+        yalign 0.3
+        textbutton _("      Start") action Jump("start")
+        hbox:
+            textbutton _("      Dev Menu") action Jump("devmen")
+            textbutton _("      Prologue Intro") action Jump("prologue_intr")
+            textbutton _("      Prologue Q&A") action Jump("prologue_qna")
+        textbutton _("      Prologue Concert End") action Jump("prologue_concert_end")
+        hbox:
+            textbutton _("      Sakura Mode Explanatipon") action Jump("experimental")
+            textbutton _("      Demo H Scene") action Jump("demo_h_start")
+        textbutton _("      End Of WIP") action NullAction()
 
 ## Input screen ################################################################
 ##
@@ -323,7 +347,9 @@ screen navigation():
         textbutton _("Load") action ShowMenu("load")
 
         textbutton _("Preferences") action ShowMenu("preferences")
-
+        #                                                               ########
+        textbutton _("Flowchart") action ShowMenu("flowchart")
+        #                                                               ########
         if _in_replay:
 
             textbutton _("End Replay") action EndReplay(confirm=True)

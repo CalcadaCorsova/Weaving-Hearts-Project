@@ -115,7 +115,7 @@ init: ### Character Shorthands
     define nyk  = Character("Nyeko"          ,color="#8afdff")  # D
     define nekq = Character("???"            ,color="#8afdff")  # D
     define sho  = Character("Shoko"          ,color="#000000")  # E #
-    define rin  = Character("Rin"            ,color="#08080f")  # F
+    define rin  = Character("Rin"            ,color="#b2b6d4")  # F
     define tog  = Character("Toge"           ,color="#007f0e")  # G #
     define nad  = Character("Nadeshiko"      ,color="#a4b0e6")  # H
     #NRC
@@ -307,7 +307,7 @@ init: ### Character Sprites
             attribute 1znak:#copy from above
                 zoom 0.3
                 ConditionSwitch("persistent.sakura != 0", Image("images/d-sakura-p 1.png",pos=(550-(3*30), 1350-(3*30)))   ,   "persistent.sakura == 0", Image("images/d-sakura-p 0.png"))
-label spritecheck:
+label spritecheck: #Debug
     scene b-blackscreen with dissolve
     "Sprite checker"
     window hide
@@ -349,9 +349,10 @@ label start: ### Start Of Game
     #define b = Character("Test Character 2", color="#08080f", who_outlines=[ (1, "#ffffff") ], what_outlines=[ (1, "#ffffff") ])
     #a "This is Kirara's colour"
     #b "And this is Rin's colour"
-    ### Dev Scene Select
 label devmen: ### Dev Menu
-    image ScSeTx = Text(_("Dev Scene select"), size=120)
+    ### Dev Scene Select
+    scene b-blackscreen with dissolve
+    image ScSeTx = Text(_("Dev Scene Select\nDepreciated"), size=60)
     show ScSeTx with dissolve:
         c0
         ypos 0.0
