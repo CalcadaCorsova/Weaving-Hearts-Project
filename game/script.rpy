@@ -6,8 +6,21 @@
     ##  ##    ##  ##  ##
 ##############################
 
+## === Important === ##
+
+#    "Note to coders. If you want the game script to return to the main menu use:"
+#    $ renpy.full_restart()
+#    "While the standard code is:"
+#    return
+#    "I have found situations where this returns to other areas of the script, "
+#    "trapping players in a text loop. This issue came about after I began "
+#    "implementing the flowchart system and there is likely a solution to fix the issue"
+#    "However in the meantime this is a hard solution for now"
+
+
 ### Persistants
 default persistent.sakura = 1
+default txtbox = 00
 
 ### Predefined
 init:
@@ -117,7 +130,7 @@ init: ### Character Shorthands
     define sho  = Character("Shoko"          ,color="#000000")  # E #
     define rin  = Character("Rin"            ,color="#b2b6d4")  # F
     define tog  = Character("Toge"           ,color="#007f0e")  # G #
-    define nad  = Character("Nadeshiko"      ,color="#a4b0e6")  # H
+    define shi  = Character("Nadeshiko"      ,color="#a4b0e6")  # H
     #NRC
     define ats  = Character("Atsuko"         ,color="#000000")  # A #
     define kan  = Character("Kanou"          ,color="#000000")  # B
@@ -335,6 +348,15 @@ label spritecheck: #Debug
 #show a-roka2 -work #will remove outfit work but WILL NOT correctly show a nude srite
 #show a-roka2 nude  #will change outfit to "nude" correctly
 
+
+label splashscreen: ## Opening
+    scene b-blackscreen
+    pause 1
+    $ renpy.movie_cutscene('images/x_weaverthorn_animation.ogv')
+    #scene main_menu
+    #show b-blackscreen
+    #hide b-blackscreen with dissolve
+    return
 label start: ### Start Of Game
     $ txtbox = 00
     "Welcome to the WIP Weaving hearts VN"
@@ -1093,7 +1115,8 @@ label end_of_wip:
     "{i}The VN will now return to the main menu{/i}"
     scene b-blackscreen with dissolve
     pause 1 # "
-    return
+    pause
+    $ renpy.full_restart()
 label cut: ######   ######   ######   ######   ######   ######
     scene b-blackscreen with dissolve
     $ txtbox = 23
@@ -1127,6 +1150,7 @@ label cut: ######   ######   ######   ######   ######   ######
     pause 0.5
     show a-sca awkward with dissolve
     return
+    $ renpy.full_restart()
 ##############################
   ##  ##  ##  ##  ##  ####
   ##  ##  ##  ##  ##  ##  ##
